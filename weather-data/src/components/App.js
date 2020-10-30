@@ -1,7 +1,6 @@
 import React from "react";
 import HomePage from "./HomePage";
 import Header from "./common/Header";
-
 import { Route, Switch, Redirect } from "react-router-dom";
 import NotFoundPage from "./NotFoundPage";
 import { ToastContainer } from "react-toastify";
