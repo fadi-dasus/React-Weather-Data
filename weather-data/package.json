@@ -13,9 +13,9 @@
     "react-router-dom": "^5.0.0",
     "react-scripts": "4.0.0",
     "react-toastify": "^5.1.1",
+    "shortid": "^2.2.16",
     "web-vitals": "^0.2.4"
   },
-  
   "scripts": {
     "start": "run-p start:dev start:api",
     "start:dev": "react-scripts start",

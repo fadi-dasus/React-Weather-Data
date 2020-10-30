@@ -7,7 +7,6 @@ export async function getData() {
     // let forecastDataResponse = null
     try {
         wheatherDataResponse = await httpHelper(urlData)
-        console.log(wheatherDataResponse)
     } catch (error) {
         console.log(error)
     }
