@@ -14,7 +14,6 @@ function App() {
             <Header />
             <Switch>
                 <Route path="/" exact component={HomePage} />
-                <Redirect from="/about-page" to="about" />
                 <Route component={NotFoundPage} />
             </Switch>
         </div>

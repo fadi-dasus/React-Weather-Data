@@ -4,8 +4,8 @@ function Header() {
     return (
         <nav>
             <NavLink activeStyle={cssStyle} exact to="/">Home</NavLink> {"|"}
-            <NavLink activeStyle={cssStyle} to="/courses">Weather Table</NavLink>{"  |   "}
-            <NavLink activeStyle={cssStyle} to="/about">Add mesuranment</NavLink>{"  |   "}
+            <NavLink activeStyle={cssStyle} to="/weatherData">Weather Table</NavLink>{"  |   "}
+            <NavLink activeStyle={cssStyle} to="/measurements">Add measurements</NavLink>{"  |   "}
         </nav>
 
     )
