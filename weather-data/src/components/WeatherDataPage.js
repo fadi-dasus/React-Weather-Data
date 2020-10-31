@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getData } from '../api/apiHelper'
+import { getHistoricalData, } from '../api/apiHelper'
 import WeatherDataList from './WeatherDataList'
 import { Link } from 'react-router-dom'
 
@@ -8,8 +8,7 @@ function WeatherDataPage() {
     const [weatherData, setWeatherData] = useState([])
 
     useEffect(() => {
-
-        getData().then(_data => setWeatherData(_data))
+        getHistoricalData().then(_data => setWeatherData(_data))
     }, [])
 
     return (

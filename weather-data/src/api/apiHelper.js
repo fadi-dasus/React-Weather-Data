@@ -1,15 +1,52 @@
-import { httpHelper, urlData, } from './httpHelper.js'
+import { handleResponse, handleError, handlePostResponse } from './httpHelper.js'
 
+export const urlData = 'http://localhost:3001/data'
+export const urlForecast = 'http://localhost:3001/forecast'
 
-
-export async function getData() {
-    let wheatherDataResponse = null
-    // let forecastDataResponse = null
-    try {
-        wheatherDataResponse = await httpHelper(urlData)
-    } catch (error) {
-        console.log(error)
-    }
-
-    return wheatherDataResponse;
+export async function getHistoricalData() {
+    return fetch(urlData)
+        .then(handleResponse)
+        .catch(handleError);
 }
+
+
+
+export async function getForecastData() {
+    return fetch(urlForecast)
+        .then(handleResponse)
+        .catch(handleError);
+}
+
+
+export async function getHistoricalDataForHorsens() {
+    return fetch(urlData + '/Horsens')
+        .then(handleResponse)
+        .catch(handleError);
+
+}
+
+
+export async function getHistoricalDataForAarhus() {
+    return fetch(urlData + '/Aarhus')
+        .then(handleResponse)
+        .catch(handleError);
+}
+
+
+export async function getHistoricalDataForCopenhagen() {
+    return fetch(urlData + '/Copenhagen')
+        .then(handleResponse)
+        .catch(handleError);
+
+}
+
+
+export function saveObservation(observation) {
+    return fetch(urlData, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.parse(observation)
+    }).then(handlePostResponse)
+        .catch(handleError);
+}
+

@@ -4,7 +4,7 @@ import TextInput from './common/TextInput'
 
 function DataForm(props) {
     return (
-        <form>
+        <form onSubmit={props.onSubmit}>
             <div className="form-group">
                 <label htmlFor="type">Type</label>
                 <div className="field">
