@@ -1,79 +1,71 @@
-import React from "react";
+import React from 'react'
+import TextInput from './common/TextInput'
+
 
 function DataForm(props) {
     return (
         <form>
             <div className="form-group">
-                <label htmlFor="value">Value</label>
-                <div className="field">
-                    <input
-                        id="value"
-                        type="text"
-                        name="measurement-value"
-                        className="form-control"
-                        value=""
-                    />
-                </div>
-            </div>
-
-            <div className="form-group">
                 <label htmlFor="type">Type</label>
                 <div className="field">
                     <select
-                        id="type"
-                        name="measurement-type"
-                        value=""
+                        id="measurement-type"
+                        name="type"
+                        value={props.data.type}
+                        onChange={props.onChange}
                         className="form-control"
                     >
                         <option value="" />
-                        <option value="1">temperature</option>
-                        <option value="2">precipitation</option>
-                        <option value="3">cloud coverage</option>
-                        <option value="4">wind speed</option>
+                        <option value="temperature">temperature</option>
+                        <option value="precipitation">precipitation</option>
+                        <option value="cloud coverage">cloud coverage</option>
+                        <option value="wind speed">wind speed</option>
                     </select>
-                </div>
-            </div>
-
-            <div className="form-group">
-                <label htmlFor="unit">Unit</label>
-                <div className="field">
-                    <input
-                        type="text"
-                        id="measurement-unit"
-                        name="unit"
-                        className="form-control"
-                        value=""
-                    />
-                </div>
-            </div>
-            <div className="form-group">
-                <label htmlFor="time">Time</label>
-                <div className="field">
-                    <input
-                        type="text"
-                        id="measurement-time"
-                        name="time"
-                        className="form-control"
-                        value=""
-                    />
                 </div>
             </div>
             <div className="form-group">
                 <label htmlFor="place">Place</label>
                 <div className="field">
-                <select
-                        id="place"
-                        name="measurement-place"
-                        value=""
+                    <select
+                        id="measurement-place"
+                        name="place"
+                        onChange={props.onChange}
+                        value={props.data.place}
                         className="form-control"
                     >
                         <option value="" />
-                        <option value="1">Horsens</option>
-                        <option value="2">Copenhagen</option>
-                        <option value="3">Aarhus</option>
+                        <option value="Horsens">Horsens</option>
+                        <option value="Copenhagen">Copenhagen</option>
+                        <option value="Aarhus">Aarhus</option>
                     </select>
                 </div>
             </div>
+
+
+
+            <TextInput
+                id="measurement-value"
+                label="Value"
+                onChange={props.onChange}
+                name="value"
+                value={props.data.value}
+            />
+
+            <TextInput
+                id="measurement-unit"
+                label="Unit"
+                onChange={props.onChange}
+                name="unit"
+                value={props.data.unit}
+            />
+
+            <TextInput
+                id="measurement-time"
+                label="Time"
+                onChange={props.onChange}
+                name="time"
+                value={props.data.time}
+            />
 
             <input type="submit" value="Save" className="btn btn-primary" />
         </form>
