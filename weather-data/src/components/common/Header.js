@@ -5,7 +5,7 @@ function Header() {
         <nav>
             <NavLink activeStyle={cssStyle} exact to="/">Home</NavLink> {"|"}
             <NavLink activeStyle={cssStyle} to="/weatherData">Weather Table</NavLink>{"|"}
-            <NavLink activeStyle={cssStyle} to="/measurements">Add measurements</NavLink>{"|"}
+            <NavLink activeStyle={cssStyle} to="/addMeasurementPage">Add measurements</NavLink>{"|"}
         </nav>
 
     )

@@ -53,4 +53,4 @@ WeatherDataList.propTypes = {
     ).isRequired
 };
 
-export default WeatherDataList
+export default WeatherDataList 
