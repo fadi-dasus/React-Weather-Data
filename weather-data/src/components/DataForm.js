@@ -12,6 +12,7 @@ function DataForm(props) {
                         id="measurement-type"
                         name="type"
                         value={props.data.type}
+                        // error={props.error.type}
                         onChange={props.onChange}
                         className="form-control"
                     >
@@ -21,6 +22,10 @@ function DataForm(props) {
                         <option value="cloud coverage">cloud coverage</option>
                         <option value="wind speed">wind speed</option>
                     </select>
+                    {props.error.type && (
+                        <div className="alert alert-danger">{props.error.type}</div>
+                    )}
+
                 </div>
             </div>
             <div className="form-group">
@@ -38,6 +43,9 @@ function DataForm(props) {
                         <option value="Copenhagen">Copenhagen</option>
                         <option value="Aarhus">Aarhus</option>
                     </select>
+                    {props.error.place && (
+                        <div className="alert alert-danger">{props.error.place}</div>
+                    )}
                 </div>
             </div>
 
@@ -49,6 +57,8 @@ function DataForm(props) {
                 onChange={props.onChange}
                 name="value"
                 value={props.data.value}
+                error={props.error.value}
+
             />
 
             <TextInput
@@ -57,6 +67,8 @@ function DataForm(props) {
                 onChange={props.onChange}
                 name="unit"
                 value={props.data.unit}
+                error={props.error.unit}
+
             />
 
             <TextInput
@@ -65,8 +77,9 @@ function DataForm(props) {
                 onChange={props.onChange}
                 name="time"
                 value={props.data.time}
-            />
+                error={props.error.time}
 
+            />
             <input type="submit" value="Save" className="btn btn-primary" />
         </form>
     );
