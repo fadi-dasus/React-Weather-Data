@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import WeatherDataList from './WeatherDataList'
-import { Link } from 'react-router-dom'
 import store from '../stores/historicalData'
 import { loadTable } from '../actions/weatherActions'
 
@@ -19,11 +18,9 @@ function WeatherDataPage() {
     function onChange() {
         setRecords(store.getRecords())
     }
-
     return (
         <>
             <h2>Data</h2>
-            <Link className="btn btn-primary" to="/addMeasurementPage"> Add Measurement</Link>
             <WeatherDataList data={records} />
 
         </>

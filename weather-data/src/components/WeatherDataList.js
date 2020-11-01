@@ -8,6 +8,12 @@ function WeatherDataList(props) {
 
     return (
         <>
+            <div className="container">
+                <input className="form-control mr-sm-2" type="search" placeholder="Search" />
+                <button className="btn btn-outline-success " >Filter By City</button>
+                <button className="btn btn-outline-success" >Filter By Date</button>
+                <button className="btn btn-outline-success">Reset Filters</button>
+            </div>
             <table className="table">
                 <thead>
                     <tr>
@@ -16,8 +22,6 @@ function WeatherDataList(props) {
                         <th>Unit</th>
                         <th>Time</th>
                         <th>Place</th>
-
-
                     </tr>
                 </thead>
                 <tbody>
@@ -29,9 +33,6 @@ function WeatherDataList(props) {
                                 <td>{item.unit} </td>
                                 <td>{item.time} </td>
                                 <td>{item.place} </td>
-
-
-
                             </tr>
                         )
                     })}
