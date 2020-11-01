@@ -13,7 +13,6 @@ function AddMeasurementPage() {
         time: '',
         place: ''
     })
-    //TODO useEffect
 
     function handleChnage({ target }) {
         const _updatedFormData = { ...formData, [target.name]: target.value }
