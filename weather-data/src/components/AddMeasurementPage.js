@@ -1,7 +1,8 @@
 import React, { Fragment, useState } from 'react'
 import DataFrom from './DataForm'
-import { saveObservation } from '../api/apiHelper'
 import { toast } from 'react-toastify'
+// import store from '../stores/historicalData'
+import * as weatherActions from "../actions/weatherActions";
 
 function AddMeasurementPage() {
     const [errors, setErrors] = useState({});
@@ -12,6 +13,7 @@ function AddMeasurementPage() {
         time: '',
         place: ''
     })
+    //TODO useEffect
 
     function handleChnage({ target }) {
         const _updatedFormData = { ...formData, [target.name]: target.value }
@@ -34,7 +36,7 @@ function AddMeasurementPage() {
         //this prevent the client from posting back to the server
         event.preventDefault()
         if (!formIsValid()) return;
-        saveObservation(formData)
+        weatherActions.saveDataForm(formData)
         toast.success('Measurement Saved')
     }
 

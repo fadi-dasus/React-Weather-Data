@@ -66,6 +66,7 @@ app.get('/data/:place', (req, res) => {
 app.post('/data', (req, res) => {
     data.push([].concat(req.body))
     res.status(201)
+    res.data(req.body)
     res.send()
 })
 

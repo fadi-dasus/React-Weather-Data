@@ -10,8 +10,6 @@ export async function handleResponse(response) {
 }
 
 export async function handlePostResponse(response) {
-    console.log(response.status)
-
     if (response.ok) return response.text();
     if (response.status === 400) {
         const error = await response.text();

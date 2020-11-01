@@ -45,7 +45,10 @@ export function saveObservation(observation) {
     return fetch(urlData, {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify(observation)
+        body: JSON.stringify({
+            ...observation,
+            value: parseInt(observation.value, 10)
+        })
     }).then(handlePostResponse)
         .catch(handleError);
 }

@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import { getHistoricalData, } from '../api/apiHelper'
 import WeatherDataList from './WeatherDataList'
 import { Link } from 'react-router-dom'
+import store from '../stores/historicalData'
 
 function WeatherDataPage() {
-
-    const [weatherData, setWeatherData] = useState([])
+    const [weatherData, setWeatherData] = useState(store.getRecords())
 
     useEffect(() => {
-        getHistoricalData().then(_data => setWeatherData(_data))
+        store.addChangeListener(onChange);
     }, [])
+    function onChange() {
+        setWeatherData(store.getRecords())
+    }
 
     return (
         <>
