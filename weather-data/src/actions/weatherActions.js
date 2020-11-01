@@ -6,10 +6,20 @@ import actionTypes from './actionTypes'
 export function saveDataForm(record) {
 
     return api.saveObservation(record).then(savedRecord => {
-        // tell all the stores that a record has just been added  
+        // tell all the stores that a record has just been added 
         dispatcher.dispatch({
             actionType: actionTypes.ADD_RECORD,
-            record: record
+            record
+        })
+    })
+
+}
+
+export function loadTable() {
+    return api.getHistoricalData().then(records => {
+            dispatcher.dispatch({
+            actionType: actionTypes.LOAD_RECORDS,
+            records
         })
     })
 

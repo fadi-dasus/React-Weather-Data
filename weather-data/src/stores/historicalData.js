@@ -29,11 +29,11 @@ const store = new HistoricalDataStore()
 dispatcher.register(action => {
     switch (action.actionType) {
         case actionTypes.ADD_RECORD:
-            console.log('//////////////')
-            console.log(action.record)
-            console.log('//////////////')
-
             _records.push(action.record)
+            store.emitChange()
+            break;
+        case actionTypes.LOAD_RECORDS:
+            _records = action.records
             store.emitChange()
             break;
         default:
