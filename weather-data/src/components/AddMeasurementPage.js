@@ -17,7 +17,10 @@ function AddMeasurementPage() {
     function handleSubmit(event) {
         //this prevent the client from posting back to the server
         event.preventDefault()
+        console.log('"""""""""""""""""')
         console.log(formData)
+        console.log('"""""""""""""""""')
+
         saveObservation(formData)
     }
 

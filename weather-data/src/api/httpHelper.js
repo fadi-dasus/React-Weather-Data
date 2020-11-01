@@ -10,15 +10,14 @@ export async function handleResponse(response) {
 }
 
 export async function handlePostResponse(response) {
-    console.log('***********')
-    console.log(response)
-    console.log('***********')
-    if (response.created) return response.json();
+    console.log(response.status)
+
+    if (response.ok) return response.text();
     if (response.status === 400) {
         const error = await response.text();
         throw new Error(error);
     }
-    throw new Error("Network response was not created.");
+    throw new Error("Network response was not created." + response.status);
 }
 
 export function handleError(error) {

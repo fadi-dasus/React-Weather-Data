@@ -45,7 +45,7 @@ export function saveObservation(observation) {
     return fetch(urlData, {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.parse(observation)
+        body: JSON.stringify(observation)
     }).then(handlePostResponse)
         .catch(handleError);
 }
