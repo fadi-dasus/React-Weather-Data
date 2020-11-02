@@ -30,7 +30,7 @@ function ForecastList(props) {
                     {props.data.map((item) => {
                         return (
                             <tr key={shortid.generate()}>
-                                <td >{item.from} </td>
+                                <td className="">{item.from} </td>
                                 <td>{item.to} </td>
                                 <td>{item.type} </td>
                                 <td>{item.unit} </td>

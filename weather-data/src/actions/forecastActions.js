@@ -19,7 +19,6 @@ export function filterForecastByDate(date) {
     })
 }
 
-
 function DateInterval(_from, _to, date) {
 
     const from = () => new Date(_from)

@@ -2,14 +2,9 @@ import React from 'react'
 import shortid from 'shortid';
 import { PropTypes } from "prop-types";
 import sky from '../images/sky.jpg';
-
-
-
 function WeatherDataList(props) {
 
     return (
-
-
         <>
             <div
                 className="container"
@@ -64,7 +59,6 @@ function WeatherDataList(props) {
         </>
     )
 }
-
 
 WeatherDataList.propTypes = {
     data: PropTypes.arrayOf(

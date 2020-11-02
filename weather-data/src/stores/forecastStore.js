@@ -18,6 +18,7 @@ class ForecastStore extends EventEmitter {
     emitChange() {
         this.emit(CHANGE_EVENT);
     }
+
     getRecords() {
         return _records;
     }
@@ -29,8 +30,9 @@ class ForecastStore extends EventEmitter {
 }
 const forecastStore = new ForecastStore()
 dispatcher.register(action => {
-    switch (action.actionType) {
 
+    switch (action.actionType) {
+        
         case actionTypes.LOAD_FORECAST_RECORDS:
             _records = action.records
             forecastStore.emitChange()
