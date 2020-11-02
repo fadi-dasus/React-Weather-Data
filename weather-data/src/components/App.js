@@ -6,6 +6,7 @@ import AddMeasurementPage from './AddMeasurementPage'
 import { Route, Switch } from "react-router-dom";
 import NotFoundPage from "./NotFoundPage";
 import { ToastContainer } from "react-toastify";
+import ForecastPage from './ForecastPage'
 import "react-toastify/dist/ReactToastify.css";
 
 
@@ -17,6 +18,7 @@ function App() {
             <Switch>
                 <Route path="/" exact component={HomePage} />
                 <Route path="/weatherData" component={WeatherDataPage} />
+                <Route path="/forecast" component={ForecastPage} />
                 <Route path="/addMeasurementPage" component={AddMeasurementPage} />
 
                 <Route component={NotFoundPage} />

@@ -34,8 +34,7 @@ function WeatherDataPage() {
         filterByCity(city)
     }
 
-    function handleDateChnage({ target }) {
-        console.log(target)
+    function handleDateChange({ target }) {
         const _updatedDate = { ...date, [target.name]: target.value }
         setDate(_updatedDate)
     }
@@ -47,11 +46,10 @@ function WeatherDataPage() {
 
     return (
         <>
-            <h2>Data</h2>
             <WeatherDataList data={records}
                 onChange={handleChange}
                 onFilter={handleFilter}
-                onDateChange={handleDateChnage}
+                onDateChange={handleDateChange}
                 onDateFilter={handleDateFilter}
             />
 

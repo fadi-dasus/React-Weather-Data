@@ -26,14 +26,14 @@ function WeatherDataList(props) {
                     name='from'
                     value={props.value}
                     type="text"
-                    placeholder="From"
+                    placeholder="From/yyyy-mm-dd"
                 />
                 <input className="form-control mr-sm-2"
                     onMouseLeave={props.onDateChange}
                     name='to'
                     value={props.value}
                     type="text"
-                    placeholder="To" />
+                    placeholder="To//yyyy-mm-dd" />
 
                 <button className="btn btn-outline-success" >Filter By Date</button>
             </div>
