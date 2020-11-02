@@ -29,6 +29,10 @@ class HistoricalDataStore extends EventEmitter {
         //8 this will be called again when the change has happend
         return _records;
     }
+    getForPeriod(_date) {
+        return _records.filter(x => _date.contains(x.time))
+    }
+
 }
 const store = new HistoricalDataStore()
 dispatcher.register(action => {
@@ -43,9 +47,13 @@ dispatcher.register(action => {
             store.emitChange()
             break;
         case actionTypes.CITY_FILTER:
-
             _records = action.records
-            console.log(_records.length)
+            store.emitChange()
+            break;
+
+        case actionTypes.DATE_FILTER:
+
+            _records = store.getForPeriod(action.date)
             store.emitChange()
             break;
 
@@ -54,4 +62,9 @@ dispatcher.register(action => {
             break;
     }
 })
+
+
+
+
+
 export default store

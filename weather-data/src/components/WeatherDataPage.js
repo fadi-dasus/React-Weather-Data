@@ -1,14 +1,18 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import WeatherDataList from './WeatherDataList'
 import store from '../stores/historicalData'
-import { filterByCity } from '../actions/weatherActions'
+import { filterByCity, filterByDate } from '../actions/weatherActions'
 
 function WeatherDataPage() {
 
     // 1 first we get the list from the store
     const [records, setRecords] = useState(store.getRecords())
-
     const [city, setCity] = useState('')
+
+    const [date, setDate] = useState({
+        from: ''
+        , to: ''
+    })
 
     useEffect(() => {
         store.addChangeListener(onChange);
@@ -30,12 +34,26 @@ function WeatherDataPage() {
         filterByCity(city)
     }
 
+    function handleDateChnage({ target }) {
+        console.log(target)
+        const _updatedDate = { ...date, [target.name]: target.value }
+        setDate(_updatedDate)
+    }
+
+    function handleDateFilter(event) {
+        event.preventDefault()
+        filterByDate(date)
+    }
+
     return (
         <>
             <h2>Data</h2>
             <WeatherDataList data={records}
                 onChange={handleChange}
-                onFilter={handleFilter} />
+                onFilter={handleFilter}
+                onDateChange={handleDateChnage}
+                onDateFilter={handleDateFilter}
+            />
 
         </>
     )
