@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from 'react'
 import DataFrom from './DataForm'
 import { toast } from 'react-toastify'
-// import store from '../stores/historicalData'
 import * as weatherActions from "../actions/weatherActions";
+
 
 function AddMeasurementPage() {
     const [errors, setErrors] = useState({});
@@ -40,8 +40,7 @@ function AddMeasurementPage() {
     }
 
     return (
-        <Fragment>
-            <h2 className="font-italic">Add Measurement  </h2>
+        <Fragment >
             <DataFrom data={formData}
                 onChange={handleChnage}
                 onSubmit={handleSubmit}

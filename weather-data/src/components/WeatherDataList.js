@@ -37,7 +37,7 @@ function WeatherDataList(props) {
 
                 <button className="btn btn-outline-success" >Filter By Date</button>
             </div>
-            <table className="table" style={{ backgroundImage: "url(" + sky + ")" }}>
+            <table className="table table-striped table-dark" style={{ backgroundImage: "url(" + sky + ")" }}>
                 <thead>
                     <tr>
                         <th>Value</th>

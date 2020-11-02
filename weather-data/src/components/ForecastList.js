@@ -5,7 +5,7 @@ import sky from '../images/sky.jpg';
 function ForecastList(props) {
     return (
         <>
-            <div className="container" onClick={props.onDateFilter}            >
+            {/* <div className="container" onClick={props.onDateFilter}            >
                 <input className="form-control mr-sm-2" onMouseLeave={props.onDateChange}
                     name='from' value={props.value} type="text" placeholder="From/yyyy-mm-dd" />
 
@@ -13,9 +13,9 @@ function ForecastList(props) {
                     value={props.value} type="text" placeholder="To//yyyy-mm-dd" />
 
                 <button className="btn btn-outline-success" >Filter By Date</button>
-            </div>
+            </div> */}
 
-            <table className="table" style={{ backgroundImage: "url(" + sky + ")" }}>
+            <table className="table table-striped table-dark" style={{ backgroundImage: "url(" + sky + ")" }}>
                 <thead>
                     <tr>
                         <th>From</th>
@@ -30,7 +30,7 @@ function ForecastList(props) {
                     {props.data.map((item) => {
                         return (
                             <tr key={shortid.generate()}>
-                                <td>{item.from} </td>
+                                <td >{item.from} </td>
                                 <td>{item.to} </td>
                                 <td>{item.type} </td>
                                 <td>{item.unit} </td>
