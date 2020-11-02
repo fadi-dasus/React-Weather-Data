@@ -8,9 +8,10 @@ import NotFoundPage from "./NotFoundPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+
 function App() {
     return (
-        <div className="container-fluid">
+        <div className="container-fluid"  >
             <ToastContainer autoClose={3000} hideProgressBar />
             <Header />
             <Switch>
@@ -20,7 +21,7 @@ function App() {
 
                 <Route component={NotFoundPage} />
             </Switch>
-        </div>
+        </div >
     );
 }
 
