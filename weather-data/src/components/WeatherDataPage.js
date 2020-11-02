@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import WeatherDataList from './WeatherDataList'
+import WeatherDataList from './list/WeatherDataList'
 import store from '../stores/historicalData'
 import { filterByCity, filterByDate } from '../actions/weatherActions'
 

@@ -32,7 +32,7 @@ const forecastStore = new ForecastStore()
 dispatcher.register(action => {
 
     switch (action.actionType) {
-        
+
         case actionTypes.LOAD_FORECAST_RECORDS:
             _records = action.records
             forecastStore.emitChange()

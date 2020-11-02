@@ -1,6 +1,7 @@
 import React from 'react'
 import shortid from 'shortid';
-import sky from '../images/sky.jpg';
+import sky from '../../images/sky.jpg';
+
 
 function ForecastList(props) {
     return (

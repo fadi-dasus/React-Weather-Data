@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import ForecastList from './ForecastList'
+import ForecastList from './list/ForecastList'
 import forecastStor from '../stores/forecastStore'
 import { loadForecastData, filterForecastByDate } from '../actions/forecastActions'
 
