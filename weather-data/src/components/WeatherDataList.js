@@ -4,15 +4,14 @@ import { PropTypes } from "prop-types";
 
 
 function WeatherDataList(props) {
-    console.log(props)
 
     return (
         <>
             <div className="container">
                 <input onMouseLeave={props.onChange} className="form-control mr-sm-2" type="search" placeholder="Search" />
                 <button onClick={props.onFilter} className="btn btn-outline-success " >Filter By City</button>
+                <input onMouseLeave={props.onChange} className="form-control mr-sm-2" type="search" placeholder="Search" />
                 <button className="btn btn-outline-success" >Filter By Date</button>
-                <button className="btn btn-outline-success">Reset Filters</button>
             </div>
             <table className="table">
                 <thead>

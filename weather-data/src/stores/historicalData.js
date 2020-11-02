@@ -43,7 +43,9 @@ dispatcher.register(action => {
             store.emitChange()
             break;
         case actionTypes.CITY_FILTER:
+
             _records = action.records
+            console.log(_records.length)
             store.emitChange()
             break;
 

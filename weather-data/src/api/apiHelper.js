@@ -1,6 +1,6 @@
 import { handleResponse, handleError, handlePostResponse } from './httpHelper.js'
 
-export const urlData = 'http://localhost:3001/data'
+export const urlData = 'http://localhost:3001/data/'
 export const urlForecast = 'http://localhost:3001/forecast/'
 
 export async function getHistoricalData() {

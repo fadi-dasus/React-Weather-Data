@@ -28,6 +28,7 @@ export function loadTable() {
 
 export function filterByCity(city) {
     return api.getDataByCity(city).then(records => {
+
         dispatcher.dispatch({
             actionType: actionTypes.CITY_FILTER,
             records
