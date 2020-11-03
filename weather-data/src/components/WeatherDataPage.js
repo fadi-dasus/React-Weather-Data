@@ -35,7 +35,6 @@ function WeatherDataPage() {
     }
 
     function handleDateChange({ target }) {
-        debugger
         const _updatedDate = { ...date, [target.name]: target.value }
         setDate(_updatedDate)
     }

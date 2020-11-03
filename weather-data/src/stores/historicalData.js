@@ -19,7 +19,6 @@ class HistoricalDataStore extends EventEmitter {
     }
     //call each registered listener whenever the state has changed(records array in this case)
     emitChange() {
-        debugger
         // 6 we emit the change that the data has been loaded from the server 
         //note we emit changes for all cases 
         this.emit(CHANGE_EVENT);
