@@ -5,7 +5,6 @@ import { filterByCity, filterByDate } from '../actions/weatherActions'
 
 function WeatherDataPage() {
 
-    // 1 first we get the list from the store
     const [records, setRecords] = useState(store.getRecords())
     const [city, setCity] = useState('')
 
@@ -16,6 +15,7 @@ function WeatherDataPage() {
 
     useEffect(() => {
         store.addChangeListener(onChange);
+        // we can do this if we want to load the data when we open the page for the first time 
         // if (records.length === 0) loadTable()
         return () => store.removeChangeListener(onChange)// cleanup on component  unmount 
     }, [records.length])

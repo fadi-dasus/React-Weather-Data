@@ -4,7 +4,7 @@ import TextInput from './common/TextInput'
 
 function DataForm(props) {
     return (
-        
+
         <form onSubmit={props.onSubmit}>
             <div className="form-group">
                 <label htmlFor="type">Type</label>
@@ -13,7 +13,7 @@ function DataForm(props) {
                         id="measurement-type"
                         name="type"
                         value={props.data.type}
-                        // error={props.error.type}
+                        error={props.error.type}
                         onChange={props.onChange}
                         className="form-control"
                     >

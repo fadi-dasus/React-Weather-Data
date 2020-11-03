@@ -32,7 +32,6 @@ function AddMeasurementPage() {
     }
 
     function handleSubmit(event) {
-        //this prevent the client from posting back to the server
         event.preventDefault()
         if (!formIsValid()) return;
         weatherActions.saveDataForm(formData)

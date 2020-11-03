@@ -7,26 +7,18 @@ let _records = []
 
 class HistoricalDataStore extends EventEmitter {
 
-    // this allows react comonents to subscribe to the store 
     addChangeListener(callback) {
-        //2 this is the second call
         this.on(CHANGE_EVENT, callback);
     }
 
-    //this will remove a linstener from the array of listeners
     removeChangeListener(callback) {
         this.removeListener(CHANGE_EVENT, callback);
     }
-    //call each registered listener whenever the state has changed(records array in this case)
     emitChange() {
-        // 6 we emit the change that the data has been loaded from the server 
-        //note we emit changes for all cases 
         this.emit(CHANGE_EVENT);
     }
-    // publish the state to public
     getRecords() {
 
-        //8 this will be called again when the change has happend
         return _records;
     }
     getForPeriod(_date) {
@@ -42,7 +34,6 @@ dispatcher.register(action => {
             store.emitChange()
             break;
         case actionTypes.LOAD_RECORDS:
-            //5 we hit this case 
             _records = action.records
             store.emitChange()
             break;
