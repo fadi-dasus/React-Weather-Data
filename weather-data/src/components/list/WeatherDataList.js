@@ -14,23 +14,23 @@ function WeatherDataList(props) {
             </div>
 
             <div className="container"
-                onClick={props.onDateFilter}
+
             >
                 <input className="form-control mr-sm-2"
-                    onMouseLeave={props.onDateChange}
+                    onChange={props.onDateChange}
                     name='from'
                     value={props.value}
                     type="text"
                     placeholder="From/yyyy-mm-dd"
                 />
                 <input className="form-control mr-sm-2"
-                    onMouseLeave={props.onDateChange}
+                    onChange={props.onDateChange}
                     name='to'
                     value={props.value}
                     type="text"
                     placeholder="To//yyyy-mm-dd" />
 
-                <button className="btn btn-outline-success" >Filter By Date</button>
+                <button className="btn btn-outline-success" onClick={props.onDateFilter}>Filter By Date</button>
             </div>
             <table className="table table-striped table-dark" style={{ backgroundImage: "url(" + sky + ")" }}>
                 <thead>
