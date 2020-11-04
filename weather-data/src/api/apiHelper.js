@@ -26,29 +26,6 @@ export async function getDataByCity(city) {
 }
 
 
-export async function getHistoricalDataForHorsens() {
-    return fetch(urlData + '/Horsens')
-        .then(handleResponse)
-        .catch(handleError);
-
-}
-
-
-export async function getHistoricalDataForAarhus() {
-    return fetch(urlData + '/Aarhus')
-        .then(handleResponse)
-        .catch(handleError);
-}
-
-
-export async function getHistoricalDataForCopenhagen() {
-    return fetch(urlData + '/Copenhagen')
-        .then(handleResponse)
-        .catch(handleError);
-
-}
-
-
 export function saveObservation(observation) {
     return fetch(urlData, {
         method: "POST",
