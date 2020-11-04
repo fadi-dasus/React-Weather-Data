@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import WeatherDataList from './list/WeatherDataList'
 import store from '../stores/historicalData'
-import { filterByCity, filterByDate } from '../actions/weatherActions'
+import { filterByCity, filterByDate, loadTable } from '../actions/weatherActions'
 
 function WeatherDataPage() {
 
@@ -15,8 +15,7 @@ function WeatherDataPage() {
 
     useEffect(() => {
         store.addChangeListener(onChange);
-        // we can do this if we want to load the data when we open the page for the first time 
-        // if (records.length === 0) loadTable()
+        if (records.length === 0) loadTable()
         return () => store.removeChangeListener(onChange)// cleanup on component  unmount 
     }, [records.length])
 
