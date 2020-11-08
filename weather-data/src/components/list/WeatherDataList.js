@@ -6,32 +6,33 @@ function WeatherDataList(props) {
 
     return (
         <>
-            <div
-                className="container"
-            >
-                <input onMouseLeave={props.onChange} className="form-control mr-sm-2" type="search" placeholder="Search" />
-                <button onClick={props.onFilter} className="btn btn-outline-success " >Filter By City</button>
+            <div  >
+                <div className="d-flex flex-row"   >
+                    <input onMouseLeave={props.onChange} className="form-control mr-sm-2" type="search" placeholder="Search"
+                        style={{ width: 615 }} />
+
+                    <button onClick={props.onFilter} className="btn btn-outline-success " >Filter By City</button>
+
+                    <input className="form-control mr-sm-2"
+                        onChange={props.onDateChange}
+                        name='from'
+                        value={props.value}
+                        type="date"
+                        placeholder="From/yyyy-mm-dd"
+                        style={{ width: 500 }}
+                    />
+                    <input className="form-control mr-sm-2"
+                        onChange={props.onDateChange}
+                        name='to'
+                        value={props.value}
+                        type="date"
+                        placeholder="To//yyyy-mm-dd"
+                        style={{ width: 500 }} />
+
+                    <button className="btn btn-outline-success" onClick={props.onDateFilter}>Filter By Date</button>
+                </div>
             </div>
 
-            <div className="container"
-
-            >
-                <input className="form-control mr-sm-2"
-                    onChange={props.onDateChange}
-                    name='from'
-                    value={props.value}
-                    type="text"
-                    placeholder="From/yyyy-mm-dd"
-                />
-                <input className="form-control mr-sm-2"
-                    onChange={props.onDateChange}
-                    name='to'
-                    value={props.value}
-                    type="text"
-                    placeholder="To//yyyy-mm-dd" />
-
-                <button className="btn btn-outline-success" onClick={props.onDateFilter}>Filter By Date</button>
-            </div>
             <table className="table table-striped table-dark" style={{ backgroundImage: "url(" + sky + ")" }}>
                 <thead>
                     <tr>
