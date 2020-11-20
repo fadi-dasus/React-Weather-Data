@@ -5,28 +5,8 @@ import { concatMap } from 'rxjs/operators'
 
 
 function WarningsRxJsPage() {
-    // const poll_url = url => interval(100).pipe(concatMap(() => ajax.getJSON(url)))
-
-
-    let button = document.getElementById('load')
-
     let timer$ = interval(1000)
-
-
-
-
-    timer$.subscribe(
-        value => ajax('http://localhost:3001/warnings')
-            .subscribe(
-                response => console.log(response.response),
-                error => console.log("my error"),
-                complete => console.log('""""""""complete""""""""')
-            )
-    )
-
-    function callAjax() {
-        debugger;
-
+    function subscribe() {
         return timer$.subscribe(
             value => ajax('http://localhost:3001/warnings')
                 .subscribe(
@@ -38,15 +18,11 @@ function WarningsRxJsPage() {
     }
 
 
-    // fromEvent(button, 'click')
-    //     .subscribe(event => {
-    //         ajax('http://localhost:3001/warnings')
-    //             .subscribe(
-    //                 response => console.log(response.response),
-    //                 error => console.log("my error"),
-    //                 complete => console.log('""""""""complete""""""""')
-    //             )
-    //     })
+    function unsubscribe() {
+        subscribe().unsubscribe()
+
+    }
+
 
     return (
         <>
@@ -56,10 +32,8 @@ function WarningsRxJsPage() {
             <h4>•	allow the user to set a minimal severity level to only display some of the warnings. Don't reload the warnings when the user changes the minimal severity level.</h4>
             <h4>•	allow the user to complete turn off warnings. Do not receive warnings from the server while they are turned off, but reload them when they are turned on again.</h4>
             <div>
-                <button onClick={callAjax()}>Load Warnings</button>
-                <button onClick={
-                    callAjax().unsubscribe()
-                }>unsub Warnings</button>
+                <button id='load' onClick={subscribe}>Load Warnings</button>
+                <button id='load' onClick={unsubscribe}>unsubscribe Warnings</button>
 
             </div>
         </>
