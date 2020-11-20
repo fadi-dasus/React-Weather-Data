@@ -10,12 +10,13 @@ export async function getHistoricalData() {
 }
 
 
-
 export async function getForecastData() {
     return fetch(urlForecast)
         .then(handleResponse)
         .catch(handleError);
 }
+
+
 
 
 export async function getDataByCity(city) {
@@ -25,7 +26,6 @@ export async function getDataByCity(city) {
 
 }
 
-
 export function saveObservation(observation) {
     return fetch(urlData, {
         method: "POST",
@@ -34,7 +34,14 @@ export function saveObservation(observation) {
             ...observation,
             value: parseInt(observation.value, 10)
         })
-    }).then(handlePostResponse)
+    }).then(
+        handlePostResponse)
+        .catch(handleError);
+}
+
+export function getWarning() {
+    return fetch('http://localhost:3001/warnings')
+        .then(handleResponse)
         .catch(handleError);
 }
 

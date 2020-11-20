@@ -13,6 +13,7 @@
     "react-router-dom": "^5.0.0",
     "react-scripts": "4.0.0",
     "react-toastify": "^5.1.1",
+    "rxjs": "^6.6.3",
     "shortid": "^2.2.16",
     "web-vitals": "^0.2.4"
   },
