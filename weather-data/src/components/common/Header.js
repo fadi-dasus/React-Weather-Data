@@ -7,6 +7,10 @@ function Header() {
             <NavLink activeStyle={cssStyle} to="/weatherData">Weather Table</NavLink>
             <NavLink activeStyle={cssStyle} to="/forecast">Forecast Table</NavLink>
             <NavLink activeStyle={cssStyle} to="/addMeasurementPage">Add Measurement</NavLink>
+            <NavLink activeStyle={cssStyle} to="/RxJs">WarningsRxJs</NavLink>
+            <NavLink activeStyle={cssStyle} to="/webSocket">WarningsWebSocket</NavLink>
+
+
         </nav>
 
 

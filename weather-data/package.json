@@ -19,7 +19,7 @@
   "scripts": {
     "start": "run-p start:dev start:api",
     "start:dev": "react-scripts start",
-    "start:api": "node src/server/server.js",
+    "start:api": "node src/server/server.js 1",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
