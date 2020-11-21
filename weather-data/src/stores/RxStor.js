@@ -3,7 +3,7 @@ import dispatcher from '../appDispatcher'
 import actionTypes from '../actions/actionTypes'
 
 const CHANGE_EVENT = 'change'
-let _records = []
+let _warnings = []
 
 class HistoricalDataStore extends EventEmitter {
 
@@ -21,12 +21,12 @@ class HistoricalDataStore extends EventEmitter {
 
     getRecords() {
 
-        return _records;
+        return _warnings;
     }
 
-    getForPeriod(_date) {
-        return _records.filter(x => _date.contains(x.time))
-    }
+    // getForPeriod(_date) {
+    //     return _warnings.filter(x => _date.contains(x.time))
+    // }
 
 }
 
@@ -34,26 +34,10 @@ const store = new HistoricalDataStore()
 
 dispatcher.register(action => {
     switch (action.actionType) {
-        case actionTypes.ADD_RECORD:
-            _records.push(action.record)
+        case actionTypes.LOAD_WARNING_RXJS:
+            _warnings.push(action.records)
             store.emitChange()
             break;
-        case actionTypes.LOAD_RECORDS:
-            _records = action.records
-            store.emitChange()
-            break;
-        case actionTypes.CITY_FILTER:
-            _records = action.records
-            store.emitChange()
-            break;
-
-        case actionTypes.DATE_FILTER:
-
-            _records = store.getForPeriod(action.date)
-            store.emitChange()
-            break;
-
-
         default:
             break;
     }

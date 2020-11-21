@@ -1,13 +1,17 @@
 import dispatcher from '../appDispatcher'
-import * as api from '../api/apiHelper'
+import { getWarning } from '../api/ajaxHelper'
 import actionTypes from './actionTypes'
 
 
-export function loadWarningsRxJS() {
-    return api.getWarningsRxJs().then(records => {
-        dispatcher.dispatch({
-            actionType: actionTypes.LOAD_WARNING_RXJS,
-            records
+export function loadWarningsRxJSAction() {
+    getWarning().subscribe(
+        value => {
+            return dispatcher.dispatch({
+                actionType: actionTypes.LOAD_WARNING_RXJS,
+                records: value.response.warnings
+            },
+                error => console.log("my error"),
+                complete => console.log('""""""""complete""""""""')
+            )
         })
-    })
 }

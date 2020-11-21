@@ -1,5 +1,7 @@
 import { handleResponse, handleError, handlePostResponse } from './httpHelper.js'
 
+
+
 export const urlData = 'http://localhost:3001/data/'
 export const urlForecast = 'http://localhost:3001/forecast/'
 
@@ -38,10 +40,3 @@ export function saveObservation(observation) {
         handlePostResponse)
         .catch(handleError);
 }
-
-export function getWarning() {
-    return fetch('http://localhost:3001/warnings')
-        .then(handleResponse)
-        .catch(handleError);
-}
-
