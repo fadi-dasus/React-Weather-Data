@@ -1,17 +1,24 @@
 import dispatcher from '../appDispatcher'
-import { getWarning } from '../api/ajaxHelper'
+import { interval } from 'rxjs'
+import { ajax } from 'rxjs/ajax'
 import actionTypes from './actionTypes'
+
+export const warningUrl = 'http://localhost:3001/warnings'
 
 
 export function loadWarningsRxJSAction() {
-    getWarning().subscribe(
-        value => {
-            return dispatcher.dispatch({
-                actionType: actionTypes.LOAD_WARNING_RXJS,
-                records: value.response.warnings
-            },
-                error => console.log("my error"),
-                complete => console.log('""""""""complete""""""""')
-            )
-        })
+
+    interval(4000).subscribe(
+        value => ajax(warningUrl).subscribe(
+            value => {
+                return dispatcher.dispatch({
+                    actionType: actionTypes.LOAD_WARNING_RXJS,
+                    records: value
+                },
+
+                    error => console.log(error),
+                    complete => console.log('""""""""completed""""""""')
+                )
+            }))
 }
+

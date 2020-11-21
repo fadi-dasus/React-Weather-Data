@@ -1,19 +1,39 @@
-import React from 'react'
-import { getWarningRxJS } from '../../api/ajaxHelper'
+import React, { useEffect, useState } from 'react'
+// import { getWarningRxJS } from '../../api/ajaxHelper'
+import { loadWarningsRxJSAction } from '../../actions/warningsActions'
+import RxJSStore from '../../stores/RxStor'
 
 
 
 function WarningsRxJsPage() {
 
-    const observable$ = getWarningRxJS()
+    const [warnings, setWarnings] = useState(RxJSStore.getWarnings())
 
 
-    function unsubscribeClickHandler() {
-        console.log('unsubscribing')
-        observable$.unsubscribe()
+    useEffect(() => {
+        RxJSStore.addChangeListener(onChange);
+        if (warnings.length === 0) loadWarningsRxJSAction()
+        return () => RxJSStore.removeChangeListener(onChange)
+    }, [warnings.length])
+
+
+    function onChange() {
+        setWarnings(RxJSStore.getWarnings())
     }
 
 
+
+    // const observable$ = getWarningRxJS()
+
+
+    // function unsubscribeClickHandler() {
+    //     console.log('unsubscribing')
+    //     observable$.unsubscribe()
+    // }
+
+    function log() {
+        console.log(warnings)
+    }
     return (
         <>
             <h2>WarningsRxJsPage</h2>
@@ -23,7 +43,10 @@ function WarningsRxJsPage() {
             <h4>•allow the user to complete turn off warnings. Do not receive warnings from the server while they are turned off, but reload them when they are turned on again.</h4>
             <div>
 
-                <button onClick={unsubscribeClickHandler}>unsubscribe Warnings</button>
+                {/* <button onClick={unsubscribeClickHandler}>unsubscribe Warnings</button> */}
+                <button onClick={log}>unsubscribe Warnings</button>
+
+
             </div>
         </>
     )

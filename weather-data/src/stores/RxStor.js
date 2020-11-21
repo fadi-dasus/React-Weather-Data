@@ -5,7 +5,7 @@ import actionTypes from '../actions/actionTypes'
 const CHANGE_EVENT = 'change'
 let _warnings = []
 
-class HistoricalDataStore extends EventEmitter {
+class RxStor extends EventEmitter {
 
     addChangeListener(callback) {
         this.on(CHANGE_EVENT, callback);
@@ -19,7 +19,7 @@ class HistoricalDataStore extends EventEmitter {
         this.emit(CHANGE_EVENT);
     }
 
-    getRecords() {
+    getWarnings() {
 
         return _warnings;
     }
@@ -30,13 +30,15 @@ class HistoricalDataStore extends EventEmitter {
 
 }
 
-const store = new HistoricalDataStore()
+const RxJSStore = new RxStor()
 
 dispatcher.register(action => {
     switch (action.actionType) {
         case actionTypes.LOAD_WARNING_RXJS:
-            _warnings.push(action.records)
-            store.emitChange()
+            // console.log(JSON.stringify(action.records.response.warnings[0].prediction, null, 2))
+            _warnings.push(
+                JSON.stringify(action.records.response.warnings[0].prediction, null, 2))
+            RxJSStore.emitChange()
             break;
         default:
             break;
@@ -47,4 +49,25 @@ dispatcher.register(action => {
 
 
 
-export default store
+export default RxJSStore
+
+
+// [
+//     {
+//         "id": 1092,
+//         "severity": 6,
+//         "prediction": {
+//             "from": 12.8,
+//             "to": 26.3,
+//             "precipitation_types": [
+//                 "rain",
+//                 "sleet",
+//                 "hail"
+//             ],
+//             "type": "precipitation",
+//             "unit": "mm",
+//             "time": "2020-11-21T20:00:00.000Z",
+//             "place": "Aarhus"
+//         }
+//     }
+// ]
