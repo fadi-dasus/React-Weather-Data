@@ -37,7 +37,8 @@ dispatcher.register(action => {
         case actionTypes.LOAD_WARNING_RXJS:
             // console.log(JSON.stringify(action.records.response.warnings[0].prediction, null, 2))
             _warnings.push(
-                JSON.stringify(action.records.response.warnings[0].prediction, null, 2))
+                // JSON.stringify(action.records.response.warnings[0].prediction, null, 2))
+                (action.records.response.warnings[0]))
             RxJSStore.emitChange()
             break;
         default:

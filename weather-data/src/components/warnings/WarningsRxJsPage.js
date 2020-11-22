@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 // import { getWarningRxJS } from '../../api/ajaxHelper'
 import { loadWarningsRxJSAction } from '../../actions/warningsActions'
 import RxJSStore from '../../stores/RxStor'
+import WarningList from '../list/warningRxJsList'
 
 
 
@@ -46,7 +47,7 @@ function WarningsRxJsPage() {
                 {/* <button onClick={unsubscribeClickHandler}>unsubscribe Warnings</button> */}
                 <button onClick={log}>unsubscribe Warnings</button>
 
-
+                <WarningList data={warnings} />
             </div>
         </>
     )
