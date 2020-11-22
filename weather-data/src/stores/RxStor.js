@@ -32,10 +32,7 @@ const RxJSStore = new RxStor()
 dispatcher.register(action => {
     switch (action.actionType) {
         case actionTypes.LOAD_WARNING_RXJS:
-
-            _warnings.push(
-                // JSON.stringify(action.records.response.warnings[0].prediction, null, 2))
-                (action.records.response.warnings[0]))
+            _warnings.push(action.records)
             RxJSStore.emitChange()
             break;
         default:

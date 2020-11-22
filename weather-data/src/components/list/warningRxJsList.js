@@ -3,23 +3,12 @@ import shortid from 'shortid';
 import sky from '../../images/sky.jpg';
 
 function warningRxJsList(props) {
+    console.log('""""""""""""""props.data""""""""""""""')
+    console.log(props.data)
+    console.log('""""""""""""""props.data""""""""""""""')
+
     return (
         <>
-
-            <div>
-                <select id="severity">
-                    <option defaultValue=" "></option>
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                </select>
-
-            </div>
             <table className="table table-striped table-dark" style={{ backgroundImage: "url(" + sky + ")" }}>
                 <thead>
                     <tr>
@@ -35,8 +24,11 @@ function warningRxJsList(props) {
                     </tr>
                 </thead>
                 <tbody>
-
                     {props.data.map((item) => {
+                        console.log('""""""""""""""item""""""""""""""')
+                        console.log(item.severity)
+                        console.log(item.prediction.from)
+                        console.log('""""""""""""""item""""""""""""""')
                         return (
                             <tr key={shortid.generate()} >
                                 <td >{item.severity} </td>

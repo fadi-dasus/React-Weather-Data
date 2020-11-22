@@ -18,11 +18,15 @@ function WarningsRxJsPage() {
     function onChange() {
         setWarnings(RxJSStore.getWarnings())
     }
+    function log() {
+        console.log(warnings[0][0])
+    }
     return (
         <>
             <h2>WarningsRxJsPage</h2>
             <WarningList data={warnings} />
             <button onClick={unsubscribbe}>Unsubscribe</button>
+            <button onClick={log}>Log</button>
         </>
     )
 }
