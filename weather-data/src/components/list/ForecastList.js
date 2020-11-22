@@ -10,17 +10,17 @@ function ForecastList(props) {
                 <input className="form-control mr-sm-2"
                     style={{ width: 500, }}
                     onMouseLeave={props.onDateChange}
-                    name='from' value={props.value} type="date" 
+                    name='from' value={props.value} type="date"
                     placeholder="From/yyyy-mm-dd" />
 
                 <input className="form-control mr-sm-2"
                     style={{ width: 500, }}
                     onMouseLeave={props.onDateChange} name='to'
-                    value={props.value} type="date" 
+                    value={props.value} type="date"
                     placeholder="To//yyyy-mm-dd" />
 
-                <button className="btn btn-outline-success" 
-                onClick={props.onDateFilter} >Filter By Date</button>
+                <button className="btn btn-outline-success"
+                    onClick={props.onDateFilter} >Filter By Date</button>
             </div>
 
             <table className="table table-striped table-dark" style={{ backgroundImage: "url(" + sky + ")" }}>
@@ -38,7 +38,7 @@ function ForecastList(props) {
                     {props.data.map((item) => {
                         return (
                             <tr key={shortid.generate()}>
-                                <td className="">{item.from} </td>
+                                <td >{item.from} </td>
                                 <td>{item.to} </td>
                                 <td>{item.type} </td>
                                 <td>{item.unit} </td>

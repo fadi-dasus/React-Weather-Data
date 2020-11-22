@@ -24,9 +24,6 @@ class RxStor extends EventEmitter {
         return _warnings;
     }
 
-    // getForPeriod(_date) {
-    //     return _warnings.filter(x => _date.contains(x.time))
-    // }
 
 }
 
@@ -35,7 +32,7 @@ const RxJSStore = new RxStor()
 dispatcher.register(action => {
     switch (action.actionType) {
         case actionTypes.LOAD_WARNING_RXJS:
-            // console.log(JSON.stringify(action.records.response.warnings[0].prediction, null, 2))
+
             _warnings.push(
                 // JSON.stringify(action.records.response.warnings[0].prediction, null, 2))
                 (action.records.response.warnings[0]))

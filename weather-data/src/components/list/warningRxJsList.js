@@ -3,7 +3,6 @@ import shortid from 'shortid';
 import sky from '../../images/sky.jpg';
 
 function warningRxJsList(props) {
-
     return (
         <>
 
@@ -40,7 +39,7 @@ function warningRxJsList(props) {
                     {props.data.map((item) => {
                         return (
                             <tr key={shortid.generate()} >
-                                <td className="">{item.severity} </td>
+                                <td >{item.severity} </td>
                                 <td>{item.prediction.from} </td>
                                 <td>{item.prediction.to} </td>
                                 <td>{item.prediction.precipitation_types} </td>
