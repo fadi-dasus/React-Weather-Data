@@ -6,18 +6,23 @@ import { filter, map, concatMap } from 'rxjs/operators'
 
 export const warningUrl = 'http://localhost:3001/warnings'
 
-const ajaxObservable$ = interval(2000).pipe(concatMap(() => ajax(warningUrl)))
+const ajaxObservable$ = interval(2000).pipe(concatMap(() => ajax(warningUrl)), map(value => {
+    console.log(value.response.warnings)
+    return value.response.warnings
+}))
+
 let ajaxSubscriber$ = undefined
 
 export function loadWarningsRxJSAction() {
-    ajaxSubscriber$ = ajaxObservable$.subscribe(
-        value => {
-            dispatcher.dispatch({
-                actionType: actionTypes.LOAD_WARNING_RXJS,
-                records: value
-            }
-            )
-        })
+    ajaxSubscriber$ = ajaxObservable$
+        .subscribe(
+            value => {
+                dispatcher.dispatch({
+                    actionType: actionTypes.LOAD_WARNING_RXJS,
+                    records: value
+                }
+                )
+            })
 }
 export function unsubscribbe() {
     if (ajaxSubscriber$ !== undefined)
