@@ -1,14 +1,19 @@
-import React from 'react'
-function WarningsWebSocketPage() {
+import React, { useEffect, useState } from 'react'
+import { loadWarningsRxJSAction } from '../../actions/warningsSocketActions'
+import WarningSocketList from '../list/warningSocketList'
 
+
+
+function WarningsWebSocketPage() {
+let warnings =[];
     return (
-        <div>
-            <h2>WarningsWebSocketPage</h2>
-            <h4>•	display current warnings when the page load and update them without reloading the page when they are updated on the server. </h4>
-            <h4>•	display changes in warnings since last update. </h4>
-            <h4>•	allow the user to set a minimal severity level to only display some of the warnings. Don't reload the warnings when the user changes the minimal severity level.</h4>
-            <h4>•	allow the user to complete turn off warnings. Do not receive warnings from the server while they are turned off, but reload them when they are turned on again.</h4>
-        </div>
+        <>
+            
+            <div>
+
+                <WarningSocketList  data= {warnings}/>
+            </div>
+        </>
     )
 }
 export default WarningsWebSocketPage
