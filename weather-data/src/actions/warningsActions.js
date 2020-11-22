@@ -7,7 +7,7 @@ import { filter, map, concatMap } from 'rxjs/operators'
 export const warningUrl = 'http://localhost:3001/warnings'
 
 const ajaxObservable$ = interval(2000).pipe(concatMap(() => ajax(warningUrl)), map(value => {
-    console.log(value.response.warnings)
+    // console.log(value.response.warnings)
     return value.response.warnings
 }))
 

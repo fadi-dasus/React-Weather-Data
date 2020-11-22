@@ -19,8 +19,9 @@ function WarningsRxJsPage() {
         setWarnings(RxJSStore.getWarnings())
     }
     function log() {
-        console.log(warnings[0][0])
+        // console.log(warnings[0][0])
     }
+
     return (
         <>
             <h2>WarningsRxJsPage</h2>

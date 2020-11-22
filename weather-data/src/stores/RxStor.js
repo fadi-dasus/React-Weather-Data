@@ -32,7 +32,7 @@ const RxJSStore = new RxStor()
 dispatcher.register(action => {
     switch (action.actionType) {
         case actionTypes.LOAD_WARNING_RXJS:
-            _warnings.push(action.records)
+            _warnings.push(...[].concat(action.records))
             RxJSStore.emitChange()
             break;
         default:
