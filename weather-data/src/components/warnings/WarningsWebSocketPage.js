@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { loadWarningsRxJSAction } from '../../actions/warningsSocketActions'
-import WarningSocketList from '../list/warningSocketList'
+import WarningList from '../list/warningList'
 import { ConnectToServer, unsubscribe} from '../../api/socketHelper'
 
 
@@ -21,7 +20,7 @@ function WarningsWebSocketPage() {
                 <button className="btn btn-outline-success " onClick={ConnectToServer} style={{ width: 411 }}>Get Wrarnings Since The Last Update</button>
 
             </div>
-                <WarningSocketList data={warnings} />
+                <WarningList data={warnings} />
             </div>
         </>
     )

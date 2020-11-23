@@ -32,11 +32,11 @@ export function unsubscribeToWarnigs () {
     websocket.send(message);
 }
 
-let subscribed = true;
+let subscribe = true;
 export function unsubscribe(unsubscribeBtn) {
 
     unsubscribeToWarnigs();
    
-    subscribed = !subscribed;
+    subscribe = !subscribe;
 }
 
