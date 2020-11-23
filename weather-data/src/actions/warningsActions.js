@@ -3,10 +3,14 @@ import { interval } from 'rxjs'
 import { ajax } from 'rxjs/ajax'
 import actionTypes from './actionTypes'
 import { filter, map, concatMap, tap, mergeMap } from 'rxjs/operators'
+import RxJSStore from '../stores/RxStor'
 
 export const warningUrl = 'http://localhost:3001/warnings'
 
+export const warningUpdateUrl = 'http://localhost:3001/warnings/since/'
+
 const ajaxObservable$ = interval(2000).pipe(mergeMap(() => ajax(warningUrl)), map(ajaxResponse => ajaxResponse.response.warnings))
+
 
 let ajaxSubscriber$ = undefined
 
@@ -41,6 +45,24 @@ export function setMinSeverityLevel(event) {
                 }
                 )
             })
+}
+
+export function getWarningSinceTheLastUpdateAction() {
+
+    const time = RxJSStore.getTimeFromTheLastRecord()
+    interval(2000).pipe(mergeMap(() => ajax(warningUpdateUrl + time)),
+        map(ajaxResponse => ajaxResponse.response.warnings))
+        .subscribe(
+            value => {
+                dispatcher.dispatch({
+                    actionType: actionTypes.GET_UPDATES_SINCE_LAST,
+                    records: value
+                }
+                )
+            })
+
+
+
 }
 
 

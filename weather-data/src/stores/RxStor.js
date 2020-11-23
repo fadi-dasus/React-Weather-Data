@@ -24,6 +24,11 @@ class RxStor extends EventEmitter {
         return _warnings;
     }
 
+    getTimeFromTheLastRecord() {
+        if (_warnings.length !== 0)
+            return _warnings[_warnings.length - 1].prediction.time
+    }
+
 
 }
 
@@ -37,6 +42,10 @@ dispatcher.register(action => {
             break;
         case actionTypes.FILTER_WARNING_RXJS:
             _warnings.push(...[].concat(action.records.filter(x => x.severity > action.value)))
+            RxJSStore.emitChange()
+            break;
+        case actionTypes.GET_UPDATES_SINCE_LAST:
+            _warnings.push(...[].concat(action.records))
             RxJSStore.emitChange()
             break;
         default:

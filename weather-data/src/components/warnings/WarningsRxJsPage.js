@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 //  import { getWarningRxJS } from '../../api/ajaxHelper'
-import { loadWarningsRxJSAction, unsubscribbe, setMinSeverityLevel } from '../../actions/warningsActions'
+import { loadWarningsRxJSAction, unsubscribbe, setMinSeverityLevel, getWarningSinceTheLastUpdateAction } from '../../actions/warningsActions'
 import RxJSStore from '../../stores/RxStor'
 import WarningList from '../list/warningRxJsList'
 
 function WarningsRxJsPage() {
 
-    const [warnings, setWarnings] = useState([...RxJSStore.getWarnings()])
+    const [warnings, setWarnings] = useState(RxJSStore.getWarnings())
 
     useEffect(() => {
         RxJSStore.addChangeListener(onChange);
@@ -27,7 +27,7 @@ function WarningsRxJsPage() {
                     style={{ width: 615 }} />
                 <button className="btn btn-outline-success " onClick={unsubscribbe} style={{ width: 411 }}>Unsubscribe For Warnings</button>
                 <button className="btn btn-outline-success " onClick={loadWarningsRxJSAction} style={{ width: 411 }}>Subscribbe For Warnings</button>
-                <button className="btn btn-outline-success " onClick={loadWarningsRxJSAction} style={{ width: 411 }}>Get Wrarnings Since The Last Update</button>
+                <button className="btn btn-outline-success " onClick={getWarningSinceTheLastUpdateAction} style={{ width: 411 }}>Get Wrarnings Since The Last Update</button>
 
             </div>
             <WarningList data={warnings} />
