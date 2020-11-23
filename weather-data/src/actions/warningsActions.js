@@ -9,13 +9,13 @@ export const warningUrl = 'http://localhost:3001/warnings'
 
 export const warningUpdateUrl = 'http://localhost:3001/warnings/since/'
 
-const ajaxObservable$ = interval(2000).pipe(mergeMap(() => ajax(warningUrl)), map(ajaxResponse => ajaxResponse.response.warnings))
+const ajaxObservable$ = (url) => interval(2000).pipe(mergeMap(() => ajax(url)), map(ajaxResponse => ajaxResponse.response.warnings))
 
 
 let ajaxSubscriber$ = undefined
 
 export function loadWarningsRxJSAction() {
-    ajaxSubscriber$ = ajaxObservable$
+    ajaxSubscriber$ = ajaxObservable$(warningUrl)
         .subscribe(
             value => {
                 dispatcher.dispatch({
@@ -50,8 +50,8 @@ export function setMinSeverityLevel(event) {
 export function getWarningSinceTheLastUpdateAction() {
 
     const time = RxJSStore.getTimeFromTheLastRecord()
-    interval(2000).pipe(mergeMap(() => ajax(warningUpdateUrl + time)),
-        map(ajaxResponse => ajaxResponse.response.warnings))
+    unsubscribbe()
+    ajaxSubscriber$ = ajaxObservable$(warningUpdateUrl + time)
         .subscribe(
             value => {
                 dispatcher.dispatch({
