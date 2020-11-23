@@ -8,8 +8,6 @@ export const warningUrl = 'http://localhost:3001/warnings'
 
 const ajaxObservable$ = interval(2000).pipe(mergeMap(() => ajax(warningUrl)), map(ajaxResponse => ajaxResponse.response.warnings))
 
-
-
 let ajaxSubscriber$ = undefined
 
 export function loadWarningsRxJSAction() {
@@ -23,6 +21,8 @@ export function loadWarningsRxJSAction() {
                 )
             })
 }
+
+
 export function unsubscribbe() {
     console.log('unsubscribe ')
     if (ajaxSubscriber$ !== undefined)
@@ -30,28 +30,18 @@ export function unsubscribbe() {
 }
 
 export function setMinSeverityLevel(event) {
-    console.log(event.target.value)
+    console.log('the value you asked for is ', event.target.value)
     unsubscribbe()
-    ajaxObservable$.pipe(
-        filter(data => {
-            console.log('Hello')
-
-            console.log(data[0])
-            return data.severity > event.target.value
-        })
-
-        // , tap(data => console.log(data[0].severity)),
-    )
-
+    ajaxSubscriber$ = ajaxObservable$
         .subscribe(
             value => {
                 dispatcher.dispatch({
-                    actionType: actionTypes.LOAD_WARNING_RXJS,
-                    records: value
+                    actionType: actionTypes.FILTER_WARNING_RXJS,
+                    records: value,
+                    value: event.target.value
                 }
                 )
-            }
-        )
+            })
 }
 
 

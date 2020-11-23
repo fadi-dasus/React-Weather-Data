@@ -35,11 +35,14 @@ dispatcher.register(action => {
             _warnings.push(...[].concat(action.records))
             RxJSStore.emitChange()
             break;
+        case actionTypes.FILTER_WARNING_RXJS:
+            _warnings.push(...[].concat(action.records.filter(x => x.severity > action.value)))
+            RxJSStore.emitChange()
+            break;
         default:
             break;
     }
 })
-
 
 
 
