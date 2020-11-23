@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 //  import { getWarningRxJS } from '../../api/ajaxHelper'
-import { loadWarningsRxJSAction, unsubscribbe } from '../../actions/warningsActions'
+import { loadWarningsRxJSAction, unsubscribbe, setMinSeverityLevel } from '../../actions/warningsActions'
 import RxJSStore from '../../stores/RxStor'
 import WarningList from '../list/warningRxJsList'
 
 function WarningsRxJsPage() {
 
-    const [warnings, setWarnings] = useState(RxJSStore.getWarnings())
+    const [warnings, setWarnings] = useState([...RxJSStore.getWarnings()])
 
     useEffect(() => {
         RxJSStore.addChangeListener(onChange);
@@ -23,9 +23,14 @@ function WarningsRxJsPage() {
     return (
         <>
             <h2>WarningsRxJsPage</h2>
+            <div>
+
+                <label >Severity Level</label>
+                <textarea onChange={setMinSeverityLevel} style={{ width: 100, height: 25 }}> </textarea>
+                <button onClick={unsubscribbe}>Unsubscribe</button>
+                <button onClick={loadWarningsRxJSAction}>Subscribbe</button>
+            </div>
             <WarningList data={warnings} />
-            <button onClick={unsubscribbe}>Unsubscribe</button>
-            <button onClick={loadWarningsRxJSAction}>Subscribbe</button>
         </>
     )
 }
