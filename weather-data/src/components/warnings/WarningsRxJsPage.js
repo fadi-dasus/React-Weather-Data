@@ -22,12 +22,13 @@ function WarningsRxJsPage() {
 
     return (
         <>
-            <h2>WarningsRxJsPage</h2>
-            <div>
-                <label >Severity Level</label>
-                <textarea onChange={setMinSeverityLevel} style={{ width: 100, height: 25 }}> </textarea>
-                <button onClick={unsubscribbe}>Unsubscribe</button>
-                <button onClick={loadWarningsRxJSAction}>Subscribbe</button>
+            <div className="d-flex flex-row"   >
+                <input onChange={setMinSeverityLevel} className="form-control mr-sm-2" type="search" placeholder="Choose Severity Level"
+                    style={{ width: 615 }} />
+                <button className="btn btn-outline-success " onClick={unsubscribbe} style={{ width: 411 }}>Unsubscribe For Warnings</button>
+                <button className="btn btn-outline-success " onClick={loadWarningsRxJSAction} style={{ width: 411 }}>Subscribbe For Warnings</button>
+                <button className="btn btn-outline-success " onClick={loadWarningsRxJSAction} style={{ width: 411 }}>Get Wrarnings Since The Last Update</button>
+
             </div>
             <WarningList data={warnings} />
         </>
