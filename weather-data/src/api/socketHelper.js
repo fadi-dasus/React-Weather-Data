@@ -1,26 +1,29 @@
-import { webSocket } from "rxjs/webSocket";
-import { interval } from 'rxjs'
-import { ajax } from 'rxjs/ajax'
 
 
-export const warningUrl = 'http://localhost:3001/warnings'
+export const warningUrl = "ws://localhost:3002/warnings"
 
-
-export function setupConnectionToServer()  {
-    webSocket = new WebSocket(warningUrl);
-    webSocket.onopen = () => {
-        webSocket.send("subscribe");
+let websocket;
+export function ConnectToServer() {
+    websocket = new WebSocket(warningUrl);
+    websocket.onopen = () => {
+        websocket.send("subscribe");
+        console.log("connection established")
     }
-    webSocket.onmessage = message => {
-        getWarning(JSON.parse(message.data));
+
+    websocket.onmessage = message => {
+        const messageToJson = JSON.parse(message.data);
+        console.log(messageToJson)
+    }
+
+    websocket.onerror = error => {
+        console.log(error)
+    }
+
+    websocket.onclose = close => {
+        console.error("connection closed")
     }
 }
 
 
-export function getWarning() {
-    interval(1000).subscribe(
-        value => ajax(warningUrl)
-    )
-}
 
 
