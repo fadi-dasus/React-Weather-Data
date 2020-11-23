@@ -37,16 +37,13 @@ const RxJSStore = new RxStor()
 dispatcher.register(action => {
     switch (action.actionType) {
         case actionTypes.LOAD_WARNING_RXJS:
-            _warnings.push(...[].concat(action.records))
-            RxJSStore.emitChange()
+            loadWarningActionHelper(action)
             break;
         case actionTypes.FILTER_WARNING_RXJS:
-            _warnings.push(...[].concat(action.records.filter(x => x.severity > action.value)))
-            RxJSStore.emitChange()
+            filterWarningActionHelper(action)
             break;
         case actionTypes.GET_UPDATES_SINCE_LAST:
-            _warnings.push(...[].concat(action.records))
-            RxJSStore.emitChange()
+            loadWarningActionHelper(action)
             break;
         default:
             break;
@@ -54,6 +51,15 @@ dispatcher.register(action => {
 })
 
 
+function loadWarningActionHelper(action) {
+    _warnings.push(...[].concat(action.records))
+    RxJSStore.emitChange()
+}
+
+function filterWarningActionHelper(action) {
+    _warnings.push(...[].concat(action.records.filter(x => x.severity > action.value)))
+    RxJSStore.emitChange()
+}
 
 
 export default RxJSStore
