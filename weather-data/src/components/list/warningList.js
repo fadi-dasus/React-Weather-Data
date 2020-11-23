@@ -2,7 +2,7 @@ import React from 'react'
 import shortid from 'shortid';
 import sky from '../../images/sky.jpg';
 
-function warningRxJsList(props) {
+function warningList(props) {
     return (
         <>
             <table className="table table-striped table-dark" style={{ backgroundImage: "url(" + sky + ")" }}>
@@ -21,7 +21,7 @@ function warningRxJsList(props) {
                 </thead>
                 <tbody>
                     {props.data.map((item) => {
-                           return (
+                        return (
                             <tr key={shortid.generate()} >
                                 <td >{item.severity} </td>
                                 <td>{item.prediction.from} </td>
@@ -43,4 +43,4 @@ function warningRxJsList(props) {
 }
 
 
-export default warningRxJsList 
+export default warningList 

@@ -16,7 +16,13 @@ function HomePage() {
             <p className={whiteColor}> Display warnings and keeping them up to date using RxJs library.</p>
 
             <h1>Course Assignment 4.2 "WebSocket"</h1>
-            <p className={whiteColor}> Display warnings and keeping them up to date using webSocket protocol.</p>
+
+            <p className={whiteColor}>•display current warnings when the page load and update them without reloading the page when they are updated on the server. </p>
+            <p className={whiteColor}>•display changes in warnings since last update. </p>
+            <p className={whiteColor}>•allow the user to set a minimal severity level to only display some of the warnings. Don't reload the warnings when the user changes the minimal severity level.</p>
+            <p className={whiteColor}>•allow the user to complete turn off warnings. Do not receive warnings from the server while they are turned off, but reload them when they are turned on again.</p>
+
+
 
 
 
