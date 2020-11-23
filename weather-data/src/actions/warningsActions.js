@@ -2,14 +2,13 @@ import dispatcher from '../appDispatcher'
 import { interval } from 'rxjs'
 import { ajax } from 'rxjs/ajax'
 import actionTypes from './actionTypes'
-import { filter, map, concatMap } from 'rxjs/operators'
+import { filter, map, concatMap, tap, mergeMap } from 'rxjs/operators'
 
 export const warningUrl = 'http://localhost:3001/warnings'
 
-const ajaxObservable$ = interval(2000).pipe(concatMap(() => ajax(warningUrl)), map(value => {
-    // console.log(value.response.warnings)
-    return value.response.warnings
-}))
+const ajaxObservable$ = interval(2000).pipe(mergeMap(() => ajax(warningUrl)), map(ajaxResponse => ajaxResponse.response.warnings))
+
+
 
 let ajaxSubscriber$ = undefined
 
@@ -25,23 +24,37 @@ export function loadWarningsRxJSAction() {
             })
 }
 export function unsubscribbe() {
+    console.log('unsubscribe ')
     if (ajaxSubscriber$ !== undefined)
         ajaxSubscriber$.unsubscribe()
 }
 
+export function setMinSeverityLevel(event) {
+    console.log(event.target.value)
+    unsubscribbe()
+    ajaxObservable$.pipe(
+        filter(data => {
+            console.log('Hello')
 
-    // export function loadWarningsRxJSAction() {
+            console.log(data[0])
+            return data.severity > event.target.value
+        })
 
-    //     interval(4000).subscribe(
-    //         value => ajax(warningUrl).subscribe(
-    //             value => {
-    //                 return dispatcher.dispatch({
-    //                     actionType: actionTypes.LOAD_WARNING_RXJS,
-    //                     records: value
-    //                 },
-    //                     error => console.log(error),
-    //                     complete => console.log('""""""""completed""""""""')
-    //                 )
-    //             }))
-    // }
+        // , tap(data => console.log(data[0].severity)),
+    )
+
+        .subscribe(
+            value => {
+                dispatcher.dispatch({
+                    actionType: actionTypes.LOAD_WARNING_RXJS,
+                    records: value
+                }
+                )
+            }
+        )
+}
+
+
+
+
 
