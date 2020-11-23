@@ -1,13 +1,14 @@
 
-
 export const warningUrl = "ws://localhost:3002/warnings"
 
 let websocket;
+
 export function ConnectToServer() {
     websocket = new WebSocket(warningUrl);
     websocket.onopen = () => {
         websocket.send("subscribe");
         console.log("connection established")
+
     }
 
     websocket.onmessage = message => {
@@ -26,4 +27,16 @@ export function ConnectToServer() {
 
 
 
+export function unsubscribeToWarnigs () {
+    const message ='unsubscribe';
+    websocket.send(message);
+}
+
+let subscribed = true;
+export function unsubscribe(unsubscribeBtn) {
+
+    unsubscribeToWarnigs();
+   
+    subscribed = !subscribed;
+}
 
