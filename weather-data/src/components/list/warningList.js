@@ -3,6 +3,8 @@ import shortid from 'shortid';
 import sky from '../../images/sky.jpg';
 
 function warningList(props) {
+    
+
     return (
         <>
             <table className="table table-striped table-dark" style={{ backgroundImage: "url(" + sky + ")" }}>
@@ -21,6 +23,7 @@ function warningList(props) {
                 </thead>
                 <tbody>
                     {props.data.map((item) => {
+                              
                         return (
                             <tr key={shortid.generate()} >
                                 <td >{item.severity} </td>

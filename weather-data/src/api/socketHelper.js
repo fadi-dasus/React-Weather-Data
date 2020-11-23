@@ -1,9 +1,10 @@
-
+import dispatcher from '../appDispatcher'
+import actionTypes from '.././actions/actionTypes'
 export const warningUrl = "ws://localhost:3002/warnings"
 
 let websocket;
 
-export function ConnectToServer() {
+export async function ConnectToServer() {
     websocket = new WebSocket(warningUrl);
     websocket.onopen = () => {
         websocket.send("subscribe");
@@ -13,7 +14,11 @@ export function ConnectToServer() {
 
     websocket.onmessage = message => {
         const messageToJson = JSON.parse(message.data);
-        console.log(messageToJson)
+        // console.log(messageToJson.prediction.time)
+        dispatcher.dispatch({
+            actionType: actionTypes.LOAD_SOCKET_RECORDS,
+            records :messageToJson
+        })
     }
 
     websocket.onerror = error => {
@@ -32,11 +37,11 @@ export function unsubscribeToWarnigs () {
     websocket.send(message);
 }
 
-let subscribe = true;
+let subscribed = true;
 export function unsubscribe(unsubscribeBtn) {
 
     unsubscribeToWarnigs();
    
-    subscribe = !subscribe;
+    subscribed = !subscribed;
 }
 
