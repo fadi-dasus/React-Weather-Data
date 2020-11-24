@@ -29,7 +29,6 @@ function WarningsWebSocketPage() {
     }
 
     function subscibe() {
-        console.log('cliked')
         subscribe()
         onMessage()
     }

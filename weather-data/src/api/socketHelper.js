@@ -5,7 +5,6 @@ export const warningUrl = "ws://localhost:3002/warnings"
 let websocket = new WebSocket(warningUrl);
 
 export async function ConnectToServer() {
-    console.log('on open clicked')
     websocket.onopen = () => {
         console.log("connection established")
         websocket.send("subscribe");

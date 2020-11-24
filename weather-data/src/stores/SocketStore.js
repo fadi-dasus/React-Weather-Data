@@ -51,7 +51,6 @@ function loadWarningActionHelper(action) {
 }
 
 function filterWarningActionHelper(action) {
-    console.log(action.records)
     _warnings.push(...[].concat(action.records).filter(x => x.severity > action.value))
     SocketStor.emitChange()
 }
