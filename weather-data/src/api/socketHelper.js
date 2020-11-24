@@ -1,6 +1,5 @@
 import dispatcher from '../appDispatcher'
 import actionTypes from '.././actions/actionTypes'
-
 export const warningUrl = "ws://localhost:3002/warnings"
 
 let websocket = new WebSocket(warningUrl);
@@ -35,6 +34,7 @@ export function filterBySeverityLevlForNewRecords(event) {
         })
     }
 }
+
 
 export function subscribe() {
     websocket.send("subscribe");

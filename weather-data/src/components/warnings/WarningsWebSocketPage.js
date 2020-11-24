@@ -3,7 +3,6 @@ import WarningSocketList from '../list/warningSocketList'
 import { ConnectToServer, unsubscribeToWarnigs, onMessage, subscribe, filterBySeverityLevlForNewRecords } from '../../api/socketHelper'
 import SocketStor from '../../stores/SocketStore'
 import { useRefresh } from 'react-tidy'
-import { getWarningSinceTheLastUpdateAction } from '../../actions/warningsSocketActions'
 import Spinner from '../common/Spinner'
 
 function WarningsWebSocketPage() {
@@ -45,7 +44,7 @@ function WarningsWebSocketPage() {
                         style={{ width: 615 }} />
                     <button className="btn btn-outline-success " onClick={unsubscribeToWarnigs} style={{ width: 411 }}>Unsubscribe For Warnings</button>
                     <button className="btn btn-outline-success " onClick={subscibe} style={{ width: 411 }}>Subscribe For Warnings</button>
-                    <button className="btn btn-outline-success " onClick={getWarningSinceTheLastUpdateAction} style={{ width: 411 }}>Get Wrarnings Since The Last Update</button>
+                    <button className="btn btn-outline-success " onClick={subscibe} style={{ width: 411 }}>Get Wrarnings Since The Last Update</button>
 
 
                 </div>

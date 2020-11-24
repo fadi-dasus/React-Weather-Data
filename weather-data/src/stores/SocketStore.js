@@ -24,11 +24,6 @@ class SocketStore extends EventEmitter {
         return _warnings;
     }
 
-    getTimeFromTheLastRecord() {
-        if (_warnings.length !== 0)
-            return _warnings[_warnings.length - 1].prediction.time
-    }
-
 
 }
 
@@ -43,9 +38,7 @@ dispatcher.register(action => {
         case actionTypes.FILTER_WARNING_SOCKET:
             filterWarningActionHelper(action)
             break;
-        case actionTypes.GET_UPDATES_SINCE_LAST_SOCKET:
-            loadWarningActionHelper(action)
-            break;
+        
 
         default:
             break;
