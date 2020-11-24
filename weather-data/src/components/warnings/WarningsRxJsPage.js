@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react'
-//  import { getWarningRxJS } from '../../api/ajaxHelper'
 import { loadWarningsRxJSAction, unsubscribbe, setMinSeverityLevel, getWarningSinceTheLastUpdateAction } from '../../actions/warningsActions'
 import RxJSStore from '../../stores/RxStor'
 import WarningList from '../list/warningList'
+import { useRefresh } from 'react-tidy'
 
 function WarningsRxJsPage() {
 
     const [warnings, setWarnings] = useState(RxJSStore.getWarnings())
-
+    const refresh = useRefresh()
     useEffect(() => {
         RxJSStore.addChangeListener(onChange);
-        if (warnings.length === 0) loadWarningsRxJSAction()
+        refresh()
+        if (warnings.length === 0)
+            loadWarningsRxJSAction()
         return () => RxJSStore.removeChangeListener(onChange)
-    }, [warnings.length])
+    }, [refresh, warnings.length])
 
 
     function onChange() {

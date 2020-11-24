@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import WarningSocketList from '../list/warningSocketList'
 import { ConnectToServer, unsubscribe } from '../../api/socketHelper'
-//import { loadWarningsSocketData } from '../../actions/warningsSocketActions'
 import SocketStor from '../../stores/SocketStore'
 
 function WarningsWebSocketPage() {

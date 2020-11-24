@@ -16,7 +16,7 @@ function WeatherDataPage() {
     useEffect(() => {
         store.addChangeListener(onChange);
         if (records.length === 0) loadTable()
-        return () => store.removeChangeListener(onChange)// cleanup on component  unmount 
+        return () => store.removeChangeListener(onChange)
     }, [records.length])
 
     function onChange() {

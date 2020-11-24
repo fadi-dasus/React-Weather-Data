@@ -27,7 +27,6 @@ function AddMeasurementPage() {
         if (!formData.time) _errors.time = "Time is required";
         if (!formData.place) _errors.place = "Place is required";
         setErrors(_errors);
-        // Form is valid if the errors object has no properties
         return Object.keys(_errors).length === 0;
     }
 
