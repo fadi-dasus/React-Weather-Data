@@ -1,15 +1,15 @@
 import React from 'react'
-import shortid from 'shortid';
 import sky from '../../images/sky.jpg';
 
 function warningList(props) {
-    
+
 
     return (
         <>
             <table className="table table-striped table-dark" style={{ backgroundImage: "url(" + sky + ")" }}>
                 <thead>
                     <tr>
+                        <th>Id</th>
                         <th>Severity</th>
                         <th>From</th>
                         <th>To</th>
@@ -23,9 +23,10 @@ function warningList(props) {
                 </thead>
                 <tbody>
                     {props.data.map((item) => {
-                              
+
                         return (
-                            <tr key={shortid.generate()} >
+                            <tr key={item.id} >
+                                <td >{item.id} </td>
                                 <td >{item.severity} </td>
                                 <td>{item.prediction.from} </td>
                                 <td>{item.prediction.to} </td>
