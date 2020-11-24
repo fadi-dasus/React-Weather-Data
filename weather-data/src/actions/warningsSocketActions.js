@@ -6,12 +6,12 @@ import actionTypes from './actionTypes'
 
 export function setMinSeverityLevel(event) {
 
-
+    
    
 }
 
 
 export function getWarningSinceTheLastUpdateAction() {
-    
+
     
 }

@@ -19,7 +19,7 @@ export function loadWarningsRxJSAction() {
         .subscribe(
             value => dispatchAction(actionTypes.LOAD_WARNING_RXJS, value)
         )
-    toast.success('Loading....')
+   
 }
 
 export function getWarningSinceTheLastUpdateAction() {
