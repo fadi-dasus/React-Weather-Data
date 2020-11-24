@@ -6,23 +6,24 @@ import { useRefresh } from 'react-tidy'
 
 function WarningsWebSocketPage() {
 
-   
+
     const [warnings, setWarnings] = useState(SocketStor.getWarnings())
     const refresh = useRefresh()
     useEffect(() => {
         SocketStor.addChangeListener(onChange);
-        refresh()
         if (warnings.length === 0) ConnectToServer()
         return () => SocketStor.removeChangeListener(onChange)
-    }, [refresh, warnings.length])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [warnings.length])
 
 
 
     function onChange() {
+        refresh()
         setWarnings(SocketStor.getWarnings())
     }
-  
-    
+
+
     return (
         <>
 
@@ -37,7 +38,7 @@ function WarningsWebSocketPage() {
 
                 </div>
                 <WarningSocketList data={warnings} />
-               
+
             </div>
         </>
     )

@@ -6,14 +6,15 @@ import { useRefresh } from 'react-tidy'
 
 function WarningsRxJsPage() {
 
-    const [warnings, setWarnings] = useState(RxJSStore.getWarnings())
     const refresh = useRefresh()
+    const [warnings, setWarnings] = useState(RxJSStore.getWarnings())
     useEffect(() => {
         RxJSStore.addChangeListener(onChange);
         if (warnings.length === 0)
             loadWarningsRxJSAction()
         return () => RxJSStore.removeChangeListener(onChange)
-    }, [ warnings.length])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [warnings.length])
 
 
     function onChange() {
