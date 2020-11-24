@@ -1,6 +1,6 @@
 import dispatcher from '../appDispatcher'
 import actionTypes from '.././actions/actionTypes'
-import React from 'react'
+
 
 
 export const warningUrl = "ws://localhost:3002/warnings"
@@ -17,13 +17,12 @@ export async function ConnectToServer() {
 
     websocket.onmessage = message => {
         const messageToJson = JSON.parse(message.data);
-       
-       console.log(messageToJson)
+        console.log(messageToJson)
         dispatcher.dispatch({
             actionType: actionTypes.LOAD_SOCKET_RECORDS,
-            records :messageToJson
+            records: messageToJson
         })
-       
+
     }
 
     websocket.onerror = error => {
@@ -37,8 +36,8 @@ export async function ConnectToServer() {
 
 
 
-export function unsubscribeToWarnigs () {
-    const message ='unsubscribe';
+export function unsubscribeToWarnigs() {
+    const message = 'unsubscribe';
     websocket.send(message);
 }
 
@@ -46,7 +45,7 @@ let subscribed = true;
 export function unsubscribe(unsubscribeBtn) {
 
     unsubscribeToWarnigs();
-   
+
     subscribed = !subscribed;
 }
 

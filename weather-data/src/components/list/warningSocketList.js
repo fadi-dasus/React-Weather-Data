@@ -3,10 +3,24 @@ import shortid from 'shortid';
 import sky from '../../images/sky.jpg';
 
 function warningSocketList(props) {
-    
+
 
     return (
         <>
+
+            <div class="form-group">
+                <select class="form-control" name="severitySelect" id="severitySelect">
+                    <option value="0" selected disabled>Minimum Severity Level</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
+            </div>
             <table className="table table-striped table-dark" style={{ backgroundImage: "url(" + sky + ")" }}>
                 <thead>
                     <tr>
@@ -22,9 +36,9 @@ function warningSocketList(props) {
                     </tr>
                 </thead>
                 <tbody>
-               
-                    {props.data.filter(item => item.prediction != undefined ).map((item) => {
-                   
+
+                    {props.data.filter(item => item.prediction != undefined).map((item) => {
+
                         return (
                             <tr key={shortid.generate()} >
                                 <td >{item.severity} </td>
@@ -37,7 +51,7 @@ function warningSocketList(props) {
                                 <td>{item.prediction.time} </td>
                                 <td>{item.prediction.place} </td>
                             </tr>
-                         
+
                         )
                     })}
                 </tbody>

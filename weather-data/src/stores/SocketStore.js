@@ -35,18 +35,29 @@ class SocketStore extends EventEmitter {
 const SocketStor = new SocketStore()
 
 dispatcher.register(action => {
-    
+
     switch (action.actionType) {
         case actionTypes.LOAD_SOCKET_RECORDS:
-            _warnings.push(...[].concat(action.records))
-            SocketStor.emitChange()
-         
+            loadWarningActionHelper(action)
             break
-           
+        case actionTypes.FILTER_WARNING_SOCKET:
+            filterWarningActionHelper(action)
+            break;
+
         default:
             break;
     }
 })
+
+function loadWarningActionHelper(action) {
+    _warnings.push(...[].concat(action.records))
+    SocketStor.emitChange()
+}
+
+function filterWarningActionHelper(action) {
+    _warnings.push(...[].concat(action.records.filter(x => x.severity > action.value)))
+    SocketStor.emitChange()
+}
 
 
 

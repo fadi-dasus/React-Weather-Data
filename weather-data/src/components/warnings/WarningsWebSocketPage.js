@@ -2,17 +2,19 @@ import React, { useEffect, useState } from 'react'
 import WarningSocketList from '../list/warningSocketList'
 import { ConnectToServer, unsubscribe } from '../../api/socketHelper'
 import SocketStor from '../../stores/SocketStore'
+import { useRefresh } from 'react-tidy'
 
 function WarningsWebSocketPage() {
 
-    //let warnings =[];
+   
     const [warnings, setWarnings] = useState(SocketStor.getWarnings())
-
+    const refresh = useRefresh()
     useEffect(() => {
         SocketStor.addChangeListener(onChange);
+        refresh()
         if (warnings.length === 0) ConnectToServer()
         return () => SocketStor.removeChangeListener(onChange)
-    }, [warnings.length])
+    }, [refresh, warnings.length])
 
 
 
