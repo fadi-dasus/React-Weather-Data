@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import WarningSocketList from '../list/warningSocketList'
-import { ConnectToServer, unsubscribeToWarnigs, onMessage, subscribe, filterBySeverityLevlForNewRecords } from '../../api/socketHelper'
+import WarningList from '../list/warningList'
+import { ConnectToServer, unsubscribeToWarnigs, onMessage, subscribe, filterBySeverityLevlForNewRecords } from '../../actions/socketActions'
 import SocketStor from '../../stores/SocketStore'
 import { useRefresh } from 'react-tidy'
 import Spinner from '../common/Spinner'
@@ -47,7 +47,7 @@ function WarningsWebSocketPage() {
 
 
                 </div>
-                <WarningSocketList data={warnings} />
+                <WarningList data={warnings} />
                 <Spinner />
             </div>
         </>

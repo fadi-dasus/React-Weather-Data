@@ -1,5 +1,5 @@
 import dispatcher from '../appDispatcher'
-import actionTypes from '.././actions/actionTypes'
+import actionTypes from './actionTypes'
 export const warningUrl = "ws://localhost:3002/warnings"
 
 let websocket = new WebSocket(warningUrl);

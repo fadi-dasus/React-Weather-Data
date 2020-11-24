@@ -22,7 +22,7 @@ function warningList(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {props.data.map((item) => {
+                    {props.data.filter(item => item.prediction != undefined).map((item) => {
 
                         return (
                             <tr key={item.id} >
