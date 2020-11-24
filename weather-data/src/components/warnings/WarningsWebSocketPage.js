@@ -39,7 +39,7 @@ function WarningsWebSocketPage() {
                 </div>
                 <WarningSocketList data={warnings} />
 
-            </div>
+              </div>
         </>
     )
 }

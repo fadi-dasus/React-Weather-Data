@@ -40,9 +40,9 @@ dispatcher.register(action => {
         case actionTypes.LOAD_SOCKET_RECORDS:
             loadWarningActionHelper(action)
             break
-        case actionTypes.FILTER_WARNING_SOCKET:
-            filterWarningActionHelper(action)
-            break;
+        // case actionTypes.FILTER_WARNING_SOCKET:
+        //     filterWarningActionHelper(action)
+        //     break;
 
         default:
             break;
