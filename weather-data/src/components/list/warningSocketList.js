@@ -3,12 +3,9 @@ import shortid from 'shortid';
 import sky from '../../images/sky.jpg';
 
 function warningSocketList(props) {
-
-
     return (
         <>
-
-           
+        
             <table className="table table-striped table-dark" style={{ backgroundImage: "url(" + sky + ")" }}>
                 <thead>
                     <tr>

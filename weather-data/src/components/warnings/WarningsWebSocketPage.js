@@ -3,6 +3,8 @@ import WarningSocketList from '../list/warningSocketList'
 import { ConnectToServer, unsubscribe } from '../../api/socketHelper'
 import SocketStor from '../../stores/SocketStore'
 import { useRefresh } from 'react-tidy'
+import { setMinSeverityLevel, getWarningSinceTheLastUpdateAction } from '../../actions/warningsSocketActions'
+import Spinner from '../common/Spinner'
 
 function WarningsWebSocketPage() {
 
@@ -29,16 +31,16 @@ function WarningsWebSocketPage() {
 
             <div>
                 <div className="d-flex flex-row"   >
-                    <input onChange={ConnectToServer} className="form-control mr-sm-2" type="search" placeholder="Choose Severity Level"
+                    <input onChange={setMinSeverityLevel} className="form-control mr-sm-2" type="search" placeholder="Choose Severity Level"
                         style={{ width: 615 }} />
                     <button className="btn btn-outline-success " onClick={unsubscribe} style={{ width: 411 }}>Unsubscribe For Warnings</button>
                     <button className="btn btn-outline-success " onClick={ConnectToServer} style={{ width: 411 }}>Subscribe For Warnings</button>
-                    <button className="btn btn-outline-success " onClick={ConnectToServer} style={{ width: 411 }}>Get Wrarnings Since The Last Update</button>
+                    <button className="btn btn-outline-success " onClick={getWarningSinceTheLastUpdateAction} style={{ width: 411 }}>Get Wrarnings Since The Last Update</button>
 
 
                 </div>
                 <WarningSocketList data={warnings} />
-
+                <Spinner />
               </div>
         </>
     )

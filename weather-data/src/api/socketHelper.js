@@ -2,7 +2,6 @@ import dispatcher from '../appDispatcher'
 import actionTypes from '.././actions/actionTypes'
 
 
-
 export const warningUrl = "ws://localhost:3002/warnings"
 
 let websocket;
@@ -34,12 +33,11 @@ export async function ConnectToServer() {
     }
 }
 
-
-
 export function unsubscribeToWarnigs() {
     const message = 'unsubscribe';
     websocket.send(message);
 }
+
 
 let subscribed = true;
 export function unsubscribe(unsubscribeBtn) {
@@ -48,4 +46,7 @@ export function unsubscribe(unsubscribeBtn) {
 
     subscribed = !subscribed;
 }
+
+
+
 
