@@ -1,47 +1,44 @@
 import React, { useEffect, useState } from 'react'
-import WarningList from '../list/warningList'
-import {unsubscribe} from '../../api/socketHelper'
-import { loadWarningsSocketData} from '../../actions/warningsSocketActions'
+import WarningSocketList from '../list/warningSocketList'
+import { ConnectToServer, unsubscribe } from '../../api/socketHelper'
+//import { loadWarningsSocketData } from '../../actions/warningsSocketActions'
 import SocketStor from '../../stores/SocketStore'
 
 function WarningsWebSocketPage() {
-    
- //let warnings =[];
-   const [warnings, setWarnings] = useState(SocketStor.getWarnings())
 
-   useEffect(() => {
-    
-    SocketStor.addChangeListener(onChange);
-       if (warnings.length === 0) {
+    //let warnings =[];
+    const [warnings, setWarnings] = useState(SocketStor.getWarnings())
 
-           SocketStor.getWarnings()
-           loadWarningsSocketData()
-       }
-       return () => SocketStor.removeChangeListener(onChange)
-   }, [warnings.length])
+    useEffect(() => {
+        SocketStor.addChangeListener(onChange);
+        if (warnings.length === 0) ConnectToServer()
+        return () => SocketStor.removeChangeListener(onChange)
+    }, [warnings.length])
 
 
-   function onChange() {
-       setWarnings(SocketStor.getWarnings())
-   }
 
+    function onChange() {
+        setWarnings(SocketStor.getWarnings())
+    }
+  
     
     return (
         <>
 
             <div>
-            <div className="d-flex flex-row"   >
-                <input onChange={loadWarningsSocketData} className="form-control mr-sm-2" type="search" placeholder="Choose Severity Level"
-                    style={{ width: 615 }} />
-                <button className="btn btn-outline-success " onClick={unsubscribe} style={{ width: 411 }}>Unsubscribe For Warnings</button>
-                <button className="btn btn-outline-success " onClick={loadWarningsSocketData} style={{ width: 411 }}>Subscribe For Warnings</button>
-                <button className="btn btn-outline-success " onClick={loadWarningsSocketData} style={{ width: 411 }}>Get Wrarnings Since The Last Update</button>
-                <button className="btn btn-outline-success " onClick={ warnings.map(x=> console.log(x.severity))} style={{ width: 411 }}>Get adasdasdads Since The Last Update</button>
+                <div className="d-flex flex-row"   >
+                    <input onChange={ConnectToServer} className="form-control mr-sm-2" type="search" placeholder="Choose Severity Level"
+                        style={{ width: 615 }} />
+                    <button className="btn btn-outline-success " onClick={unsubscribe} style={{ width: 411 }}>Unsubscribe For Warnings</button>
+                    <button className="btn btn-outline-success " onClick={ConnectToServer} style={{ width: 411 }}>Subscribe For Warnings</button>
+                    <button className="btn btn-outline-success " onClick={ConnectToServer} style={{ width: 411 }}>Get Wrarnings Since The Last Update</button>
 
-            </div>
+
+                </div>
+                <WarningSocketList data={warnings} />
+               
             </div>
         </>
     )
 }
 export default WarningsWebSocketPage
-{/* <WarningList data={warnings} /> */}

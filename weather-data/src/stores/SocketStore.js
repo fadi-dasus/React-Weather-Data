@@ -35,13 +35,14 @@ class SocketStore extends EventEmitter {
 const SocketStor = new SocketStore()
 
 dispatcher.register(action => {
+    
     switch (action.actionType) {
-        
         case actionTypes.LOAD_SOCKET_RECORDS:
-           _warnings.push(action.records)
-         
+            _warnings.push(...[].concat(action.records))
             SocketStor.emitChange()
-         break 
+         
+            break
+           
         default:
             break;
     }

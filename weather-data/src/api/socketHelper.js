@@ -1,5 +1,8 @@
 import dispatcher from '../appDispatcher'
 import actionTypes from '.././actions/actionTypes'
+import React from 'react'
+
+
 export const warningUrl = "ws://localhost:3002/warnings"
 
 let websocket;
@@ -14,11 +17,13 @@ export async function ConnectToServer() {
 
     websocket.onmessage = message => {
         const messageToJson = JSON.parse(message.data);
-        // console.log(messageToJson.prediction.time)
+       
+       console.log(messageToJson)
         dispatcher.dispatch({
             actionType: actionTypes.LOAD_SOCKET_RECORDS,
             records :messageToJson
         })
+       
     }
 
     websocket.onerror = error => {

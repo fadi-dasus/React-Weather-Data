@@ -35,6 +35,7 @@ class RxStor extends EventEmitter {
 const RxJSStore = new RxStor()
 
 dispatcher.register(action => {
+  
     switch (action.actionType) {
         case actionTypes.LOAD_WARNING_RXJS:
             loadWarningActionHelper(action)
