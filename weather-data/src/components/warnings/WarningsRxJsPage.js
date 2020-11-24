@@ -3,6 +3,7 @@ import { loadWarningsRxJSAction, unsubscribbe, setMinSeverityLevel, getWarningSi
 import RxJSStore from '../../stores/RxStor'
 import WarningList from '../list/warningList'
 import { useRefresh } from 'react-tidy'
+import Spinner from '../common/Spinner'
 
 function WarningsRxJsPage() {
 
@@ -34,6 +35,7 @@ function WarningsRxJsPage() {
 
             </div>
             <WarningList data={warnings} />
+            <Spinner />
         </>
     )
 }

@@ -19,6 +19,7 @@ export function loadWarningsRxJSAction() {
         .subscribe(
             value => dispatchAction(actionTypes.LOAD_WARNING_RXJS, value)
         )
+    toast.success('Loading....')
 }
 
 export function getWarningSinceTheLastUpdateAction() {
@@ -27,7 +28,7 @@ export function getWarningSinceTheLastUpdateAction() {
     ajaxSubscriber$ = ajaxObservable$(warningUpdateUrl + time)
         .subscribe(
             value => dispatchAction(actionTypes.GET_UPDATES_SINCE_LAST, value),
-            error => toast.success('You have no data since the last update'))
+            error => toast.error('You have no data since the last update'))
 }
 
 export function unsubscribbe() {
