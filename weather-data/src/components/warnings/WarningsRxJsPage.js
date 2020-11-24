@@ -10,15 +10,15 @@ function WarningsRxJsPage() {
     const refresh = useRefresh()
     useEffect(() => {
         RxJSStore.addChangeListener(onChange);
-        refresh()
         if (warnings.length === 0)
             loadWarningsRxJSAction()
         return () => RxJSStore.removeChangeListener(onChange)
-    }, [refresh, warnings.length])
+    }, [ warnings.length])
 
 
     function onChange() {
         setWarnings(RxJSStore.getWarnings())
+        refresh()
     }
 
 

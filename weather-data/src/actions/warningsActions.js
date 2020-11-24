@@ -11,7 +11,7 @@ export const warningUrl = 'http://localhost:3001/warnings'
 export const warningUpdateUrl = 'http://localhost:3001/warnings/since/'
 
 
-const ajaxObservable$ = (url) => interval(5000).pipe(mergeMap(() => ajax(url)), map(ajaxResponse => ajaxResponse.response.warnings))
+const ajaxObservable$ = (url) => interval(10000).pipe(mergeMap(() => ajax(url)), map(ajaxResponse => ajaxResponse.response.warnings))
 let ajaxSubscriber$ = undefined
 
 export function loadWarningsRxJSAction() {
