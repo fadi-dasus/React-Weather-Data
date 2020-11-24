@@ -1,36 +1,43 @@
 import dispatcher from '../appDispatcher'
 import actionTypes from '.././actions/actionTypes'
 
-
 export const warningUrl = "ws://localhost:3002/warnings"
 
-let websocket;
+let websocket = new WebSocket(warningUrl);
 
 export async function ConnectToServer() {
-    websocket = new WebSocket(warningUrl);
+    console.log('on open clicked')
     websocket.onopen = () => {
-        websocket.send("subscribe");
         console.log("connection established")
-
+        websocket.send("subscribe");
     }
+}
 
+export function onMessage() {
     websocket.onmessage = message => {
         const messageToJson = JSON.parse(message.data);
-        console.log(messageToJson)
         dispatcher.dispatch({
             actionType: actionTypes.LOAD_SOCKET_RECORDS,
             records: messageToJson
         })
-
     }
+}
 
-    websocket.onerror = error => {
-        console.log(error)
+export function filterBySeverityLevlForNewRecords(event) {
+    unsubscribeToWarnigs()
+    subscribe()
+    websocket.onmessage = message => {
+        const messageToJson = JSON.parse(message.data);
+        dispatcher.dispatch({
+            actionType: actionTypes.FILTER_WARNING_SOCKET,
+            records: messageToJson,
+            value: event.target.value
+        })
     }
+}
 
-    websocket.onclose = close => {
-        console.error("connection closed")
-    }
+export function subscribe() {
+    websocket.send("subscribe");
 }
 
 export function unsubscribeToWarnigs() {
@@ -38,15 +45,10 @@ export function unsubscribeToWarnigs() {
     websocket.send(message);
 }
 
-
-let subscribed = true;
-export function unsubscribe(unsubscribeBtn) {
-
-    unsubscribeToWarnigs();
-
-    subscribed = !subscribed;
+websocket.onerror = error => {
+    console.log(error)
 }
 
-
-
-
+websocket.onclose = close => {
+    console.error("connection closed")
+}

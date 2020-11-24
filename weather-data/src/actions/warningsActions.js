@@ -19,7 +19,7 @@ export function loadWarningsRxJSAction() {
         .subscribe(
             value => dispatchAction(actionTypes.LOAD_WARNING_RXJS, value)
         )
-   
+
 }
 
 export function getWarningSinceTheLastUpdateAction() {
