@@ -7,8 +7,7 @@ function HomePage() {
     const whiteColor = 'p-3 mb-2 bg-gradient-danger text-white'
     // p-3 mb-2 bg-gradient-danger text-white
     return (
-        <div className="jumbotron" style={{ backgroundImage: "url(" + sea + ")", height: '200%', position: 'absolute', width: '98.5%' }}
-        >
+        <div className="jumbotron" style={{ backgroundImage: "url(" + sea + ")", height: '200%', position: 'absolute', width: '98.5%' }}   >
             <h1 >Course Assignment 3.1 "Flux Pattern With React"</h1>
             <p className={whiteColor}>One way data binding using flux facebook Api.</p>
 

@@ -64,24 +64,3 @@ function filterWarningActionHelper(action) {
 
 
 export default RxJSStore
-
-
-// [
-//     {
-//         "id": 1092,
-//         "severity": 6,
-//         "prediction": {
-//             "from": 12.8,
-//             "to": 26.3,
-//             "precipitation_types": [
-//                 "rain",
-//                 "sleet",
-//                 "hail"
-//             ],
-//             "type": "precipitation",
-//             "unit": "mm",
-//             "time": "2020-11-21T20:00:00.000Z",
-//             "place": "Aarhus"
-//         }
-//     }
-// ]

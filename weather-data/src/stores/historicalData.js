@@ -38,10 +38,12 @@ dispatcher.register(action => {
             _records.push(action.record)
             store.emitChange()
             break;
+            
         case actionTypes.LOAD_RECORDS:
             _records = action.records
             store.emitChange()
             break;
+
         case actionTypes.CITY_FILTER:
             _records = action.records
             store.emitChange()
@@ -52,7 +54,6 @@ dispatcher.register(action => {
             _records = store.getForPeriod(action.date)
             store.emitChange()
             break;
-
 
         default:
             break;
